@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - "resume-*"
   workflow_dispatch:
 
 permissions:
@@ -32,29 +34,60 @@ jobs:
           root_file: source/resume.tex
           pre_compile: |
             mkdir -p build
-            chktex -q -l .chktexrc source/resume.tex
+            make lint
           args: >-
             -pdf
             -file-line-error
             -halt-on-error
             -interaction=nonstopmode
             -outdir=build
-            -jobname=Sumedh_S_Bhat_Resume
+            -jobname=Sumedh_S_Bhat
 
       - name: Verify PDF
         run: |
-          test -s build/Sumedh_S_Bhat_Resume.pdf
-          ! grep -Eq 'Overfull \\hbox|fancyhdr Warning' build/Sumedh_S_Bhat_Resume.log
+          test -s build/Sumedh_S_Bhat.pdf
+          ! grep -Eq 'Overfull \\hbox|fancyhdr Warning' build/Sumedh_S_Bhat.log
 
-      - name: Upload PDF artifact
+      - name: Upload release PDF artifact
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/resume-'))
         uses: actions/upload-artifact@v7
         with:
-          name: Sumedh-S-Bhat-Resume
-          path: build/Sumedh_S_Bhat_Resume.pdf
+          name: Sumedh_S_Bhat-${{ github.ref_name }}
+          path: build/Sumedh_S_Bhat.pdf
           if-no-files-found: error
 
-  release:
-    name: Publish PDF release
+  release-tagged-variant:
+    name: Publish tagged variant release
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/resume-')
+    needs: check-and-build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: write
+
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: Sumedh_S_Bhat-${{ github.ref_name }}
+          path: release
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_ASSET: release/Sumedh_S_Bhat-${{ github.ref_name }}.pdf
+        run: |
+          mv release/Sumedh_S_Bhat.pdf "$RELEASE_ASSET"
+          gh release create "$RELEASE_TAG" \
+            "$RELEASE_ASSET#Sumedh_S_Bhat - $RELEASE_TAG" \
+            --target "$GITHUB_SHA" \
+            --title "Resume - $RELEASE_TAG" \
+            --generate-notes
+
+  release-master:
+    name: Publish master release
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs: check-and-build
     runs-on: ubuntu-latest
@@ -67,16 +100,18 @@ jobs:
       - name: Download PDF artifact
         uses: actions/download-artifact@v7
         with:
-          name: Sumedh-S-Bhat-Resume
+          name: Sumedh_S_Bhat-master
           path: release
 
-      - name: Create GitHub release
+      - name: Create build-numbered release and tag
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: resume-${{ github.run_number }}-${{ github.run_attempt }}
+          RELEASE_TAG: release-master-${{ github.run_number }}
+          RELEASE_ASSET: release/Sumedh_S_Bhat-release-master-${{ github.run_number }}.pdf
         run: |
+          mv release/Sumedh_S_Bhat.pdf "$RELEASE_ASSET"
           gh release create "$RELEASE_TAG" \
-            "release/Sumedh_S_Bhat_Resume.pdf#Sumedh S Bhat Resume" \
+            "$RELEASE_ASSET#Sumedh_S_Bhat - $RELEASE_TAG" \
             --target "$GITHUB_SHA" \
-            --title "Resume $RELEASE_TAG" \
+            --title "Resume - $RELEASE_TAG" \
             --generate-notes
