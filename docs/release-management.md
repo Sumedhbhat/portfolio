@@ -58,7 +58,7 @@ For example, workflow run number `42` creates:
 - Git tag: `release-master-42`
 - Release title: `Resume - release-master-42`
 - Workflow artifact: `Sumedh_S_Bhat-master`
-- Release PDF: `Sumedh_S_Bhat-release-master-42.pdf`
+- Release PDF: `Sumedh_S_Bhat.pdf`
 
 Git tags reference commits rather than branches. The generated tag points to the exact `master` commit that passed the workflow.
 

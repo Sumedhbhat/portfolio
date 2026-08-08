@@ -110,11 +110,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: release-master-${{ github.run_number }}
-          RELEASE_ASSET: release/Sumedh_S_Bhat-release-master-${{ github.run_number }}.pdf
+          RELEASE_ASSET: release/Sumedh_S_Bhat.pdf
         run: |
-          mv release/Sumedh_S_Bhat.pdf "$RELEASE_ASSET"
           gh release create "$RELEASE_TAG" \
-            "$RELEASE_ASSET#Sumedh_S_Bhat - $RELEASE_TAG" \
+            "$RELEASE_ASSET" \
             --target "$GITHUB_SHA" \
             --title "Resume - $RELEASE_TAG" \
             --generate-notes

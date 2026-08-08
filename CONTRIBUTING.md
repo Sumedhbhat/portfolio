@@ -6,7 +6,7 @@ Thank you for contributing to Resume Tracker. This guide explains how to update 
 
 A pull request or an open branch does not publish a resume.
 
-A successful push to `master`, including a pull-request merge, automatically publishes the main resume. The workflow creates a tag named `release-master-<run-number>` on that commit and attaches a PDF with the same release identifier.
+A successful push to `master`, including a pull-request merge, automatically publishes the main resume. The workflow creates a tag named `release-master-<run-number>` on that commit and attaches `Sumedh_S_Bhat.pdf`.
 
 Specialized resumes are published only when a tag beginning with `resume-` is pushed. The tag may point to a commit on any branch, so a specialized resume can be released without merging that branch into `master`.
 
