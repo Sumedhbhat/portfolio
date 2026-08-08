@@ -1,0 +1,14 @@
+# The template intentionally uses commands and spacing patterns that trigger
+# stylistic ChkTeX warnings. Keep correctness-oriented checks enabled.
+CmdLine {
+  -n1
+  -n2
+  -n3
+  -n8
+  -n9
+  -n13
+  -n24
+  -n26
+  -n36
+  -n44
+}

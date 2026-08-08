@@ -1,0 +1,82 @@
+name: Resume
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-and-build:
+    name: Check and build PDF
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Lint and compile LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: source/resume.tex
+          pre_compile: |
+            mkdir -p build
+            chktex -q -l .chktexrc source/resume.tex
+          args: >-
+            -pdf
+            -file-line-error
+            -halt-on-error
+            -interaction=nonstopmode
+            -outdir=build
+            -jobname=Sumedh_S_Bhat_Resume
+
+      - name: Verify PDF
+        run: |
+          test -s build/Sumedh_S_Bhat_Resume.pdf
+          ! grep -Eq 'Overfull \\hbox|fancyhdr Warning' build/Sumedh_S_Bhat_Resume.log
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: Sumedh-S-Bhat-Resume
+          path: build/Sumedh_S_Bhat_Resume.pdf
+          if-no-files-found: error
+
+  release:
+    name: Publish PDF release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: check-and-build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: write
+
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: Sumedh-S-Bhat-Resume
+          path: release
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: resume-${{ github.run_number }}-${{ github.run_attempt }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            "release/Sumedh_S_Bhat_Resume.pdf#Sumedh S Bhat Resume" \
+            --target "$GITHUB_SHA" \
+            --title "Resume $RELEASE_TAG" \
+            --generate-notes

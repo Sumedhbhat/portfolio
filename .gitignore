@@ -1,0 +1,8 @@
+# LaTeX build output
+build/
+tmp/
+
+# Editor and operating-system files
+.DS_Store
+*.swp
+*.swo
