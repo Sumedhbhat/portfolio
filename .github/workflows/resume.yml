@@ -77,6 +77,7 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ github.ref_name }}
           RELEASE_ASSET: release/Sumedh_S_Bhat-${{ github.ref_name }}.pdf
         run: |
@@ -107,6 +108,7 @@ jobs:
       - name: Create build-numbered release and tag
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           RELEASE_TAG: release-master-${{ github.run_number }}
           RELEASE_ASSET: release/Sumedh_S_Bhat-release-master-${{ github.run_number }}.pdf
         run: |
