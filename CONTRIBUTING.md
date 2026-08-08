@@ -61,7 +61,7 @@ Then add this line to `source/sections/experience/section.tex`:
 \input{source/sections/experience/company-name}
 ```
 
-Do not add `_template.tex` itself to a `section.tex` file. Templates are linted but are not rendered.
+Do not add `_template.tex` itself to a `section.tex` file. Templates are linted but are not rendered. The `make lint` command fails if any other entry file is missing from its category's `section.tex`.
 
 ## Optional sections
 
@@ -87,7 +87,13 @@ Follow the formatting already used by neighboring entries. Avoid changing files 
 
 ## Validate changes locally
 
-Run syntax linting:
+Run the custom lint-rule tests:
+
+```sh
+make test
+```
+
+Run syntax and section-include linting:
 
 ```sh
 make lint
@@ -99,7 +105,7 @@ Compile the PDF:
 make build
 ```
 
-Run all checks, including linting, compilation, PDF verification, and configured layout-warning checks:
+Run all checks, including tests, linting, compilation, PDF verification, and configured layout-warning checks:
 
 ```sh
 make check
