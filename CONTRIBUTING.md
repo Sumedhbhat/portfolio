@@ -37,7 +37,7 @@ Every category folder contains:
 
 - `section.tex`, which controls the category heading and entry order.
 - `_template.tex`, which provides reusable placeholder content.
-- One `.tex` file for each individual entry.
+- One `.tex` file for each individual entry, or a company folder for experience spanning multiple positions.
 
 The order of the complete resume is controlled by the `\input` lines in `source/resume.tex`. The order within a category is controlled by the `\input` lines in that category's `section.tex`.
 
@@ -62,6 +62,43 @@ Then add this line to `source/sections/experience/section.tex`:
 ```
 
 Do not add `_template.tex` itself to a `section.tex` file. Templates are linted but are not rendered. The `make lint` command fails if any other entry file is missing from its category's `section.tex`.
+
+### Adding multiple positions at one company
+
+Use a company folder when one employer has multiple positions. This renders the company name and location once while keeping each position in its own file:
+
+```text
+source/sections/experience/company-name/
+├── section.tex
+├── newer-position.tex
+└── earlier-position.tex
+```
+
+The company folder's `section.tex` owns the shared heading and position order:
+
+```tex
+\resumeCompanyHeading{COMPANY NAME}{LOCATION}
+\input{source/sections/experience/company-name/newer-position}
+\input{source/sections/experience/company-name/earlier-position}
+```
+
+Each position file owns its title, dates, and bullet points:
+
+```tex
+\resumePositionHeading{JOB TITLE}{START DATE - END DATE}
+\vspace{1.0mm}
+\resumeItemListStart
+    \item{Describe an accomplishment and its measurable result.}
+\resumeItemListEnd
+```
+
+Finally, include the company folder from `source/sections/experience/section.tex`:
+
+```tex
+\input{source/sections/experience/company-name/section}
+```
+
+The include linter checks both the company folder and its individual position files.
 
 ## Optional sections
 

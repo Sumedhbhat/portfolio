@@ -4,14 +4,18 @@ set -eu
 
 status=0
 
-for section_file in source/sections/*/section.tex; do
+for section_file in source/sections/*/section.tex source/sections/*/*/section.tex; do
+    [ -f "$section_file" ] || continue
     section_directory=${section_file%/section.tex}
 
-    for entry_file in "$section_directory"/*.tex; do
+    for entry_file in "$section_directory"/*.tex "$section_directory"/*/section.tex; do
+        [ -f "$entry_file" ] || continue
+        [ "$entry_file" = "$section_file" ] && continue
+
         entry_name=${entry_file##*/}
 
         case "$entry_name" in
-            _template.tex | section.tex)
+            _template.tex)
                 continue
                 ;;
         esac
