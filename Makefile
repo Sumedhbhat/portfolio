@@ -1,7 +1,7 @@
 SHELL := /bin/sh
 
 SOURCE := source/resume.tex
-TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(wildcard source/sections/*/*.tex)
+TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(wildcard source/sections/*/*.tex) $(wildcard source/sections/*/*/*.tex)
 BUILD_DIR := build
 PDF := $(BUILD_DIR)/Sumedh_S_Bhat.pdf
 LATEXMK := latexmk
