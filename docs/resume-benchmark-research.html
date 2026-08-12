@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="SDE II to Senior Software Engineer resume benchmark and gap analysis for Sumedh S Bhat.">
+  <title>SDE II to Senior Resume Benchmark - Sumedh S Bhat</title>
+  <style>
+    :root {
+      --paper: #f7f4ee;
+      --surface: #fffdf8;
+      --ink: #17211f;
+      --muted: #596560;
+      --line: #d9d5ca;
+      --green: #0d6655;
+      --green-dark: #084b40;
+      --green-soft: #dfeee8;
+      --amber: #ad5f16;
+      --amber-soft: #f8e9d6;
+      --blue: #285a8c;
+      --blue-soft: #e4edf6;
+      --shadow: 0 18px 50px rgba(23, 33, 31, 0.09);
+      --radius: 18px;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Charter, "Iowan Old Style", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 88% 4%, rgba(13, 102, 85, 0.12), transparent 28rem),
+        linear-gradient(180deg, #fbfaf6 0, var(--paper) 36rem);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--green-dark);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+
+    a:hover { color: var(--amber); }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: white;
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 28px clamp(18px, 4vw, 64px) 80px;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+      min-height: 420px;
+      padding: 72px 0 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--amber);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { text-wrap: balance; }
+
+    h1 {
+      max-width: 930px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 0.94;
+    }
+
+    .lede {
+      max-width: 780px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    }
+
+    .meta-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .meta-card dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 18px;
+      margin: 0;
+    }
+
+    .meta-card dt {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .meta-card dd { margin: 0; font-weight: 650; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 15px;
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      background: var(--green);
+      color: white;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .button:hover { background: var(--green-dark); color: white; }
+
+    .button.secondary { background: transparent; color: var(--green-dark); }
+    .button.secondary:hover { background: var(--green-soft); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: clamp(30px, 5vw, 80px);
+      align-items: start;
+      padding-top: 38px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 22px;
+      padding: 18px 0;
+      border-top: 3px solid var(--green);
+    }
+
+    .toc h2 {
+      margin: 0 0 14px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .toc ol {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: section;
+    }
+
+    .toc li { counter-increment: section; }
+
+    .toc a {
+      display: grid;
+      grid-template-columns: 1.7rem 1fr;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-decoration: none;
+    }
+
+    .toc a::before {
+      color: var(--amber);
+      content: counter(section, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding-top: 0.18rem;
+    }
+
+    .toc a:hover { color: var(--ink); }
+
+    main { min-width: 0; }
+
+    section {
+      scroll-margin-top: 28px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:first-child { padding-top: 10px; }
+
+    section > h2 {
+      margin: 0 0 22px;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+
+    section > h2 .number {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--amber);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 750;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 34px 0 10px;
+      font-size: 1.15rem;
+      letter-spacing: -0.015em;
+    }
+
+    p { max-width: 83ch; }
+
+    .callout {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border-left: 5px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--green-soft);
+    }
+
+    .callout.warning {
+      border-left-color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .callout p:first-child { margin-top: 0; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .metric {
+      min-height: 138px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--green-dark);
+      font-family: var(--serif);
+      font-size: 2.35rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .card h3 { margin-top: 0; }
+    .card p:last-child { margin-bottom: 0; }
+
+    .priority {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--amber-soft);
+      color: #7c3e08;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .priority.p1 { background: var(--blue-soft); color: #174774; }
+    .priority.p2 { background: var(--green-soft); color: var(--green-dark); }
+
+    ul, ol { max-width: 82ch; }
+    li + li { margin-top: 7px; }
+
+    .table-wrap {
+      width: 100%;
+      margin: 24px 0;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 10px 28px rgba(23, 33, 31, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #efede6;
+      color: #39433f;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: rgba(223, 238, 232, 0.42); }
+
+    .score {
+      white-space: nowrap;
+      color: var(--green-dark);
+      font-family: var(--mono);
+      font-weight: 750;
+    }
+
+    blockquote {
+      max-width: 75ch;
+      margin: 24px 0;
+      padding: 18px 22px;
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+    }
+
+    .source-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 24px;
+      padding-left: 1.25rem;
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      justify-content: space-between;
+      padding-top: 32px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    code {
+      padding: 0.12em 0.35em;
+      border-radius: 5px;
+      background: #ebe8df;
+      font-family: var(--mono);
+      font-size: 0.88em;
+    }
+
+    @media (max-width: 1000px) {
+      .masthead { grid-template-columns: 1fr; min-height: 0; }
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 660px) {
+      .page { padding-inline: 16px; }
+      .masthead { padding-top: 42px; }
+      .toc ol, .cards, .source-list { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      th, td { padding: 11px 12px; }
+    }
+
+    @media print {
+      body { background: white; font-size: 10.5pt; }
+      .page { width: 100%; padding: 0; }
+      .masthead { min-height: 0; padding: 0 0 24px; }
+      .layout { display: block; }
+      .toc, .actions { display: none; }
+      section { break-inside: avoid; padding: 24px 0; }
+      section > h2 { font-size: 24pt; }
+      .table-wrap { overflow: visible; box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+      .card, .metric, .callout { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to report</a>
+  <div class="page">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Resume research / 12 August 2026</p>
+        <h1>SDE II to Senior resume benchmark</h1>
+        <p class="lede">A public-evidence comparison of Sumedh S Bhat's resume against engineers from Microsoft, Amazon, Google, Meta, Apple, Netflix, Stripe, and Uber.</p>
+      </div>
+      <aside class="meta-card" aria-label="Report details">
+        <dl>
+          <dt>Candidate</dt><dd>Sumedh S Bhat</dd>
+          <dt>Target</dt><dd>SDE II now; Senior stretch</dd>
+          <dt>Evidence</dt><dd>16 public profiles + 7 official roles</dd>
+          <dt>Positioning</dt><dd>Full-stack cloud platforms</dd>
+        </dl>
+        <div class="actions">
+          <a class="button" href="#gaps">Review recommendations</a>
+          <a class="button secondary" href="#references">View references</a>
+        </div>
+      </aside>
+    </header>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Report contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#conclusion">Executive conclusion</a></li>
+          <li><a href="#method">Scope and method</a></li>
+          <li><a href="#cohort">Benchmark cohort</a></li>
+          <li><a href="#patterns">Observed patterns</a></li>
+          <li><a href="#role-bar">Official role bar</a></li>
+          <li><a href="#diagnostic">Original diagnostic</a></li>
+          <li><a href="#gaps">Missing evidence</a></li>
+          <li><a href="#worksheet">Evidence worksheet</a></li>
+          <li><a href="#strategy">Resume strategy</a></li>
+          <li><a href="#tailoring">Company tailoring</a></li>
+          <li><a href="#changes">Changes made</a></li>
+          <li><a href="#references">Validated references</a></li>
+        </ol>
+      </nav>
+
+      <main id="report">
+        <section id="conclusion">
+          <h2><span class="number">01 / Conclusion</span>The work was stronger than the resume.</h2>
+          <p>The original resume had a signal-extraction problem, not an experience problem. It presented Sumedh as a capable developer who completed many features. The repository evidence supports a stronger story: an SDE II who owns multi-tenant platform, security, deployment, migration, and reliability problems across Angular, .NET, and Azure.</p>
+          <div class="metrics" aria-label="Key resume metrics">
+            <div class="metric"><strong>30%</strong><span>faster monorepo builds</span></div>
+            <div class="metric"><strong>10%</strong><span>smaller application bundles</span></div>
+            <div class="metric"><strong>25%</strong><span>higher automated test coverage</span></div>
+            <div class="metric"><strong>100+</strong><span>properties in portfolio scope</span></div>
+          </div>
+          <div class="callout">
+            <p><strong>Revised positioning:</strong> Software Engineer II building multi-tenant analytics platforms with end-to-end ownership across architecture, authorization, migrations, CI/CD, testing, and operations.</p>
+          </div>
+          <p>The remaining weakness is measurement. The next improvement should come from collecting truthful scale, operational, business, and leadership evidence rather than adding more technologies or adjectives.</p>
+        </section>
+
+        <section id="method">
+          <h2><span class="number">02 / Method</span>A bounded public benchmark, not an employee directory.</h2>
+          <p>No complete and reliable public collection contains every resume of every engineer at MAANG companies. Many engineers publish nothing, public pages can be stale, and titles are not perfectly comparable across companies. Private LinkedIn data was not scraped.</p>
+          <p>The analysis uses:</p>
+          <ol>
+            <li>Public PDFs, structured resumes, and resume-like pages voluntarily published by engineers identifying SDE II, Senior, or adjacent experience.</li>
+            <li>A small upper-bound group of Staff and Architect examples used only to calibrate senior signals.</li>
+            <li>Official job descriptions from Amazon, Apple, Google, Microsoft, and Uber.</li>
+            <li>The LaTeX resume and two local contribution summaries covering August 2024 through August 2026.</li>
+          </ol>
+          <div class="callout warning">
+            <p><strong>Validation boundary:</strong> the linked documents were opened and inspected. Employment, titles, dates, and metrics remain self-reported and were not independently verified with employers.</p>
+          </div>
+        </section>
+
+        <section id="cohort">
+          <h2><span class="number">03 / Cohort</span>Direct comparators and upper-bound examples.</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Public profile</th><th>Level / company shown</th><th>Strong signal</th><th>Lesson</th></tr></thead>
+              <tbody>
+                <tr><td><a href="https://sandeepkv93.github.io/">Sandeep Kumta Vishnu</a></td><td>SWE II, Microsoft</td><td>Architecture migration, critical defects, awards</td><td>Show problem ownership and recognition</td></tr>
+                <tr><td><a href="https://qingqingye.github.io/">Jingjing Ye</a></td><td>SWE II, Microsoft</td><td>Copilot DLP, ML inference, classification</td><td>Use a specific domain identity</td></tr>
+                <tr><td><a href="https://gist.github.com/rjramav/86a6739a40253061ec4b77fce31b1385">RajKumar Ramavath</a></td><td>SDE II, Amazon</td><td>User scale, daily volume, event-driven design</td><td>Show increasing scope and system scale</td></tr>
+                <tr><td><a href="https://alexazhu.com/assets/resume/Resume.pdf">Alexander Zhu</a></td><td>Senior, Uber; former SDE II, Amazon</td><td>Launches, security, stakeholders, device scale</td><td>Connect implementation to adoption</td></tr>
+                <tr><td><a href="https://msilvprog7.github.io/resume.pdf">Michael Snider</a></td><td>Senior, Microsoft</td><td>67% fewer bad requests, migrations, consumers</td><td>Quantify reliability and downstream reach</td></tr>
+                <tr><td><a href="https://divyanshugrover.github.io/assets/resume.pdf">Divyanshu Grover</a></td><td>Senior, Microsoft</td><td>Performance gains, SLAs, DevOps ownership</td><td>Use latency, SLA, and operational metrics</td></tr>
+                <tr><td><a href="https://psajnani.com/resume/">Pratik Sajnani</a></td><td>Senior, Microsoft</td><td>14M+ nodes; on-call queue reduction</td><td>Operational burden is a strong outcome</td></tr>
+                <tr><td><a href="https://noahgrubb.com/resume">Noah Grubb</a></td><td>Senior, Stripe</td><td>Public API, migration, security, mentoring</td><td>Show boundaries and multiplier effect</td></tr>
+                <tr><td><a href="https://julianboilen.com/assets/resume.pdf">Julian Boilen</a></td><td>Senior, Stripe</td><td>Standards, legacy reduction, roadmaps</td><td>Show decisions adopted by others</td></tr>
+                <tr><td><a href="https://www.preetamjoshi.com/resume">Preetam Joshi</a></td><td>Senior, Netflix</td><td>End-to-end ML lifecycle; member scale</td><td>Explain lifecycle and production reach</td></tr>
+                <tr><td><a href="https://www.snehainguva.com/resume.pdf">Sneha Inguva</a></td><td>Netflix; prior Senior roles</td><td>On-call, runbooks, HA, latency, migrations</td><td>Give operations explicit resume space</td></tr>
+                <tr><td><a href="https://davedelong.com/files/resume.pdf">Dave DeLong</a></td><td>Senior, Apple</td><td>Framework ownership and API review leadership</td><td>Influence proves leadership without reports</td></tr>
+                <tr><td><a href="https://assets.super.so/bee02e78-c8d8-4fba-94ee-4df977a229ad/files/d1da37d0-f63b-4ed7-a4bd-10083ecdd465.pdf">Anson Chu</a></td><td>Former Senior, Uber</td><td>500K+ RPS, team of four, on-call training</td><td>Combine scale, leadership, and operations</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Upper-bound calibration</h3>
+          <div class="cards">
+            <article class="card"><h3><a href="https://mshields822.github.io/resume.pdf">Mark Shields</a></h3><p>Google Senior through Senior Staff. Area ownership, team leadership, launches, benchmarks, and architecture across systems.</p></article>
+            <article class="card"><h3><a href="https://scottbeinlich.com/">Scott Beinlich</a></h3><p>Meta Senior to Staff. 0-to-1 payments infrastructure, 15M-20M users or advertisers, revenue scope, and promotion progression.</p></article>
+            <article class="card"><h3><a href="https://www.jbridon.com/jeremy-bridon-resume.pdf">Jeremy Bridon</a></h3><p>Apple Senior to Architect. Founded a team, moved a platform from prototype to production, drove adoption, and owned performance.</p></article>
+          </div>
+        </section>
+
+        <section id="patterns">
+          <h2><span class="number">04 / Patterns</span>What strong engineering resumes repeatedly demonstrate.</h2>
+          <div class="cards">
+            <article class="card"><h3>Scope appears early</h3><p>Users, customers, tenants, devices, requests, events, data, revenue, teams, or products make the problem boundary legible.</p></article>
+            <article class="card"><h3>Ownership is concrete</h3><p>"Owned" or "led" is followed by an API, migration, architecture, rollout, on-call area, roadmap, or standard.</p></article>
+            <article class="card"><h3>Engineering causes an outcome</h3><p>Business impact, delivery speed, reliability, cost, customer experience, operational load, or risk reduction explains why the work mattered.</p></article>
+            <article class="card"><h3>Production responsibility is visible</h3><p>On-call, runbooks, alerting, SLAs, failure handling, migrations, incident response, and rollback controls distinguish production engineering.</p></article>
+            <article class="card"><h3>Senior engineers multiply others</h3><p>Mentoring, design reviews, interviews, standards, reusable frameworks, and migration playbooks show influence beyond individual tickets.</p></article>
+            <article class="card"><h3>Selection beats completeness</h3><p>Recent work gets detail; internships, generic skills, and duplicate project explanations are compressed.</p></article>
+          </div>
+          <blockquote>Owned a meaningful problem + made a technically credible change + caused an observable result.</blockquote>
+        </section>
+
+        <section id="role-bar">
+          <h2><span class="number">05 / Hiring bar</span>Official roles reward broad ownership, not framework count.</h2>
+          <ul>
+            <li><a href="https://www.amazon.jobs/en/jobs/3004279/software-development-engineer-ii">Amazon SDE II</a>: architecture, components, availability, security, latency, microservices, mentoring, and operations.</li>
+            <li><a href="https://www.uber.com/global/en/careers/list/143271">Uber SWE II</a>: code quality, reviews, tests, documentation, and the requirements-to-monitor lifecycle.</li>
+            <li><a href="https://www.google.com/about/careers/applications/jobs/results/77194194489090758-senior-software-engineer/">Google Senior, Global Infrastructure</a>: distributed systems, technical leadership, mentoring, and large-scale infrastructure.</li>
+            <li><a href="https://www.google.com/about/careers/applications/jobs/results/134340398662197958-senior-software-engineer/">Google One Security Senior</a>: technical direction, security standards, adoption, and cross-team collaboration.</li>
+            <li><a href="https://careers.microsoft.com/v2/global/en/locations/bengaluru.html">Microsoft Bengaluru Senior</a>: long-term strategy, complex architecture, influence, and cross-organization delivery.</li>
+            <li><a href="https://jobs.apple.com/en-in/details/200664435-0321/senior-software-engineer-ai-data-platform">Apple Senior, AI Data Platform</a>: platform architecture, production AI, distributed systems, secure MCP/OAuth, troubleshooting, and stakeholders.</li>
+            <li><a href="https://www.uber.com/careers/list/144057">Uber Senior</a>: scalable systems, collaborative role modeling, thought leadership, and mentorship.</li>
+          </ul>
+          <div class="callout"><p>The shared bar is broad ownership under production constraints. No single language, framework, or cloud provider substitutes for it.</p></div>
+        </section>
+
+        <section id="diagnostic">
+          <h2><span class="number">06 / Diagnostic</span>How the original resume read.</h2>
+          <p>These are qualitative diagnostics, not ATS probabilities or hiring predictions.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Dimension</th><th>Original</th><th>Assessment</th></tr></thead>
+              <tbody>
+                <tr><td>Correct level/title</td><td class="score">4/10</td><td>Header said Software Developer despite a Software Engineer II role.</td></tr>
+                <tr><td>Ownership</td><td class="score">5/10</td><td>One strong end-to-end bullet; most stopped at implementation.</td></tr>
+                <tr><td>Architecture</td><td class="score">5/10</td><td>Useful technologies appeared, but major architecture work was missing.</td></tr>
+                <tr><td>Scale</td><td class="score">4/10</td><td>100+ properties helped; tenants, users, data, and deployment scale were absent.</td></tr>
+                <tr><td>Measurable impact</td><td class="score">6/10</td><td>Good build, bundle, test, and release-cycle metrics; many outcomes unmeasured.</td></tr>
+                <tr><td>Reliability / operations</td><td class="score">3/10</td><td>No on-call, SLO, incident, observability, or MTTR evidence.</td></tr>
+                <tr><td>Security / tenancy</td><td class="score">2/10</td><td>The strongest tenant-isolation and authorization work was absent.</td></tr>
+                <tr><td>Leadership / multiplier</td><td class="score">2/10</td><td>No mentoring, design review, standards, interviewing, or team enablement.</td></tr>
+                <tr><td>Cross-functional influence</td><td class="score">3/10</td><td>Sales appeared, but PM, security, data, and customer alignment did not.</td></tr>
+                <tr><td>Signal density</td><td class="score">4/10</td><td>Too many bullets, duplicated product description, and generic skills.</td></tr>
+                <tr><td>Distinctiveness</td><td class="score">6/10</td><td>IEEE paper, hackathons, MCP, and Azure platform work differentiate.</td></tr>
+                <tr><td>ATS readability</td><td class="score">7/10</td><td>Simple LaTeX structure; headline and keyword prioritization needed work.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="gaps">
+          <h2><span class="number">07 / Gaps</span>The evidence still missing from the resume.</h2>
+          <h3><span class="priority">Priority 0</span> Collect before serious Senior applications</h3>
+          <ol>
+            <li><strong>System scale:</strong> client organizations, tenants, workspaces, datasets, dashboards, reports, users, deployments, requests, events, rows, or regions.</li>
+            <li><strong>Business or operational results:</strong> onboarding time, manual steps, support tickets, deployment lead time, failed deployments, hours saved, adoption, or retention.</li>
+            <li><strong>Production ownership:</strong> on-call, incidents, RCAs, SLO/SLA, alerts, dashboards, MTTR, rollback, or recovery testing.</li>
+            <li><strong>Technical leadership:</strong> RFCs, design documents, reviews, architectural decisions, migration sequencing, roadmap influence, or adopted standards.</li>
+            <li><strong>Multiplier effect:</strong> mentoring, onboarding, code/design reviews, interviewing, talks, documentation, playbooks, or reusable libraries.</li>
+          </ol>
+          <h3><span class="priority p1">Priority 1</span> Strengthen the SDE II story</h3>
+          <ol start="6">
+            <li>Make the PM, design, QA, Sales, Security, BI/data, platform, and customer-team boundaries explicit.</li>
+            <li>Document orchestration details such as retry, idempotency, cancellation, timeouts, batch isolation, concurrency, and consistency.</li>
+            <li>Capture migration risk: backfills, compatibility, rollback, feature flags, environments, and tenants migrated.</li>
+            <li>Add adoption for embed-only reports, bookmarks, dataset access, AI analytics, or client-workspace deployment.</li>
+            <li>If Software Engineer II was a promotion, show the prior title and promotion date. Do not imply one if it was not.</li>
+          </ol>
+          <h3><span class="priority p2">Priority 2</span> Tailoring and polish</h3>
+          <ul>
+            <li>Tailor the first three bullets and skills order to each job.</li>
+            <li>Keep the published project while it remains differentiating and space-efficient.</li>
+            <li>Restore LeetCode or hackathon recognition only when it does not crowd out production evidence.</li>
+            <li>Include certifications only when current and materially relevant.</li>
+          </ul>
+        </section>
+
+        <section id="worksheet">
+          <h2><span class="number">08 / Worksheet</span>Where to obtain the missing numbers.</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Initiative</th><th>Questions</th><th>Evidence source</th></tr></thead>
+              <tbody>
+                <tr><td>Client workspace deployment</td><td>Clients, workspaces, environments, time before/after, failures, manual steps?</td><td>Deployment logs, PM, Durable Functions telemetry</td></tr>
+                <tr><td>Tenant and security guardrails</td><td>Users protected, incidents prevented, auth paths consolidated?</td><td>Security tickets, audits, incident tracker</td></tr>
+                <tr><td>Report activity architecture</td><td>Events/day, clients, defects or support cases removed?</td><td>API telemetry, database counts, support tickets</td></tr>
+                <tr><td>Provisioning automation</td><td>Time before/after, requests/month, touches or hours saved?</td><td>GitHub Actions, Sales/Ops, service desk</td></tr>
+                <tr><td>MCP self-service server</td><td>Users, environments, actions, adoption, outcome?</td><td>Hackathon record, Sales users, repository</td></tr>
+                <tr><td>Build optimization</td><td>Baseline/final duration, CI minutes, developers affected?</td><td>CI analytics, Nx logs</td></tr>
+                <tr><td>Test coverage</td><td>Starting/final percentage, suites, escaped defects?</td><td>Coverage history, QA reports</td></tr>
+                <tr><td>Analytics features</td><td>Customers, users, reports, bookmarks, datasets, adoption?</td><td>Pendo, Power BI usage, PM</td></tr>
+                <tr><td>Operations</td><td>On-call frequency, incidents, MTTR, alerts, runbooks?</td><td>Incident platform, App Insights, runbooks</td></tr>
+                <tr><td>Leadership</td><td>Mentees, reviews, interviews, documents, adopted standards?</td><td>GitHub history, onboarding docs, calendar</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="strategy">
+          <h2><span class="number">09 / Strategy</span>One strong SDE II version; a separate Senior stretch.</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>Primary: SDE II</h3>
+              <p>Use the verified one-page resume for roles asking for roughly three to five years of experience. Lead with the correct title, current-role platform/security/deployment evidence, one published project, selective skills, and education.</p>
+              <p><a href="#changes">Review the implemented resume changes</a></p>
+            </article>
+            <article class="card">
+              <h3>Stretch: Senior</h3>
+              <p>Create a Senior version after proving at least three signals: multi-engineer design-to-operation leadership, technical design and rollout ownership, on-call responsibility, mentoring or adopted standards, two quantified outcomes, or roadmap influence.</p>
+            </article>
+          </div>
+          <div class="callout warning"><p>Changing the headline to Senior without adding senior evidence will weaken credibility. The work may exist; it needs documentation.</p></div>
+        </section>
+
+        <section id="tailoring">
+          <h2><span class="number">10 / Tailoring</span>What to emphasize by target company.</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Target</th><th>Lead with</th><th>Add if true</th><th>De-emphasize</th></tr></thead>
+              <tbody>
+                <tr><td>Amazon SDE II</td><td>Workspace deployment, ownership, security, operations</td><td>Availability, microservices, on-call, mentoring, customer result</td><td>Frontend-only detail</td></tr>
+                <tr><td>Google L4 / Senior stretch</td><td>Architecture, authorization, migration correctness, leverage</td><td>Distributed scale, technical leadership, algorithms/data scale</td><td>Long framework inventory</td></tr>
+                <tr><td>Microsoft 62/63</td><td>C#/.NET, Azure, Entra ID, Power BI, environments</td><td>Design docs, partner influence, observability</td><td>Generic React/Node unless relevant</td></tr>
+                <tr><td>Uber SWE II</td><td>Full lifecycle, platform/API design, reliability, efficiency</td><td>Monitoring, incidents, latency, cross-functional delivery</td><td>Product description without scope</td></tr>
+                <tr><td>Apple ICT3/ICT4</td><td>Secure MCP/OAuth, platform engineering, discovery</td><td>Production AI, distributed systems, troubleshooting</td><td>Unadopted hackathon work</td></tr>
+                <tr><td>Meta E4/E5 stretch</td><td>0-to-1 delivery, product impact, speed with quality</td><td>Users, adoption, cross-team influence, technical direction</td><td>Internal tooling without reach</td></tr>
+                <tr><td>Stripe mid/senior</td><td>APIs, migrations, correctness, security, developer UX</td><td>Contracts, data integrity, rollout safety</td><td>Broad cloud buzzwords</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="changes">
+          <h2><span class="number">11 / Revision</span>What changed in the resume.</h2>
+          <ul>
+            <li>Corrected the headline from Software Developer to Software Engineer II.</li>
+            <li>Removed the outdated generic summary; the title, stack, and first bullets now establish the narrative efficiently.</li>
+            <li>Rebuilt MRI Software bullets around reusable client-workspace deployment, tenancy/security, architecture, customer scope, automation, MCP self-service, and measured engineering leverage.</li>
+            <li>Compressed internships and removed duplicate Agora product description.</li>
+            <li>Consolidated JOTE around publication, 70% content reduction, and summaries in under five minutes.</li>
+            <li>Replaced low-signal IDEs and baseline concepts with Azure, Durable Functions, Power BI Embedded, GitHub automation, Nx/ESBuild, OAuth/OIDC, authorization, and multi-tenant SaaS.</li>
+            <li>Kept recognition in modular source files but omitted it from the primary PDF so the result remains one page and experience-led.</li>
+            <li>Used only claims present in the original resume or supported by the contribution summaries. No business metrics were invented.</li>
+          </ul>
+          <div class="callout"><p><strong>Final assessment:</strong> the revised document is suitable for SDE II applications and materially closer to the evidence pattern in successful top-company resumes. Senior applications still need scope, production ownership, technical leadership, and business or reliability outcomes.</p></div>
+        </section>
+
+        <section id="references">
+          <h2><span class="number">12 / References</span>Validated public resumes and role sources.</h2>
+          <p>Each public document below was opened and its relevant experience inspected on 12 August 2026. This validates the research source, not the person's employment claims.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Reference</th><th>Format</th><th>Evidence inspected</th></tr></thead>
+              <tbody>
+                <tr><td><a href="https://sandeepkv93.github.io/">Sandeep Kumta Vishnu</a></td><td>Personal resume page</td><td>Microsoft SDE II heading; migration, architecture, critical defects, awards</td></tr>
+                <tr><td><a href="https://qingqingye.github.io/">Jingjing Ye</a></td><td>Personal resume page</td><td>Microsoft SWE II; Copilot DLP, inference, data classification</td></tr>
+                <tr><td><a href="https://gist.github.com/rjramav/86a6739a40253061ec4b77fce31b1385">RajKumar Ramavath</a></td><td>JSON resume / Gist</td><td>Amazon progression, authentication, event pipelines, daily volume, AWS</td></tr>
+                <tr><td><a href="https://alexazhu.com/assets/resume/Resume.pdf">Alexander Zhu</a></td><td>One-page PDF</td><td>Uber Senior and Amazon SDE II; launches, security, device scale</td></tr>
+                <tr><td><a href="https://msilvprog7.github.io/resume.pdf">Michael Snider</a></td><td>One-page PDF</td><td>Microsoft progression, service migration, customer errors, consumers</td></tr>
+                <tr><td><a href="https://divyanshugrover.github.io/assets/resume.pdf">Divyanshu Grover</a></td><td>One-page PDF</td><td>Microsoft performance, SLAs, modernization, DevOps</td></tr>
+                <tr><td><a href="https://psajnani.com/resume/">Pratik Sajnani</a></td><td>HTML resume</td><td>Microsoft security telemetry scale and on-call reduction</td></tr>
+                <tr><td><a href="https://noahgrubb.com/resume">Noah Grubb</a></td><td>HTML resume</td><td>Stripe API, migration, security UX, mentoring, tests</td></tr>
+                <tr><td><a href="https://julianboilen.com/assets/resume.pdf">Julian Boilen</a></td><td>One-page PDF</td><td>Stripe abstractions, standards, roadmaps, stakeholders, testing</td></tr>
+                <tr><td><a href="https://www.preetamjoshi.com/resume">Preetam Joshi</a></td><td>HTML resume</td><td>Netflix ML infrastructure and end-to-end lifecycle</td></tr>
+                <tr><td><a href="https://www.snehainguva.com/resume.pdf">Sneha Inguva</a></td><td>One-page PDF</td><td>Netflix/on-call, runbooks, HA, optimization, SDN migration</td></tr>
+                <tr><td><a href="https://davedelong.com/files/resume.pdf">Dave DeLong</a></td><td>Two-page PDF</td><td>Apple frameworks, API review, cross-team influence, adoption</td></tr>
+                <tr><td><a href="https://assets.super.so/bee02e78-c8d8-4fba-94ee-4df977a229ad/files/d1da37d0-f63b-4ed7-a4bd-10083ecdd465.pdf">Anson Chu</a></td><td>One-page PDF</td><td>Uber 500K+ RPS, team leadership, on-call training, reviews</td></tr>
+                <tr><td><a href="https://mshields822.github.io/resume.pdf">Mark Shields</a></td><td>Multi-page PDF</td><td>Google area leadership, launches, benchmarks, team scope</td></tr>
+                <tr><td><a href="https://scottbeinlich.com/">Scott Beinlich</a></td><td>Professional page</td><td>Meta progression, payments, user/advertiser and revenue scope</td></tr>
+                <tr><td><a href="https://www.jbridon.com/jeremy-bridon-resume.pdf">Jeremy Bridon</a></td><td>Two-page PDF</td><td>Apple team creation, prototype-to-production, adoption, performance</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Official role references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.amazon.jobs/en/jobs/3004279/software-development-engineer-ii">Amazon SDE II</a></li>
+            <li><a href="https://www.uber.com/global/en/careers/list/143271">Uber SWE II</a></li>
+            <li><a href="https://www.google.com/about/careers/applications/jobs/results/77194194489090758-senior-software-engineer/">Google Senior, Infrastructure</a></li>
+            <li><a href="https://www.google.com/about/careers/applications/jobs/results/134340398662197958-senior-software-engineer/">Google One Security Senior</a></li>
+            <li><a href="https://careers.microsoft.com/v2/global/en/locations/bengaluru.html">Microsoft Bengaluru Senior</a></li>
+            <li><a href="https://jobs.apple.com/en-in/details/200664435-0321/senior-software-engineer-ai-data-platform">Apple Senior, AI Data Platform</a></li>
+            <li><a href="https://www.uber.com/careers/list/144057">Uber Senior</a></li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <span>Prepared for Sumedh S Bhat</span>
+      <span>Public-source benchmark - 12 August 2026</span>
+    </footer>
+  </div>
+</body>
+</html>
