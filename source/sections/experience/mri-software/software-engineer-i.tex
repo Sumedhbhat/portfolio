@@ -3,15 +3,17 @@
 {Software Engineer I}{Aug 2023 - Dec 2025}
 \vspace{1.5mm}
 \resumeItemListStart
-    \item{Engineered and maintained a real-time analytics dashboard powering data-driven insights for large real estate portfolios spanning 100+ properties.}
-    \item{Designed and shipped a ``custom report state'' feature that automatically applies client preferences, reducing release cycles by over 50\% and improving customer retention.}
-    \item{Built an MCP server in the company hackathon that allowed the Sales team to self-provision and manage client environments, reducing onboarding time and minimizing engineering dependencies.}
-    \item{Built a microfrontend chatbot widget using Stencil.js to enhance in-app user support and engagement while maintaining isolated deployment pipelines.}
-    \item{Implemented a metadata-driven interface to fetch client-specific columns from the data warehouse, enhancing data flexibility and report customization.}
-    \item{Led end-to-end development of an automation system using GitHub Apps and GitHub Actions to streamline user provisioning and automatically assign users to Azure AD groups.}
-    \item{Refactored a large component into modular Angular services and components, improving maintainability, performance, and developer productivity.}
-    \item{Integrated Azure App Configuration for dynamic feature flag and configuration management across multi-environment deployments.}
-    \item{Automated user onboarding by detecting authorized users in the OAuth provider and provisioning them into the system when not already registered.}
-    \item{Increased automated test coverage by 25\% using xUnit, Moq, and Cypress, strengthening product reliability and reducing regression incidents.}
-    \item{Optimized monorepo build pipelines by tuning Angular, ESBuild, and NX configurations, reducing bundle size by 10\% and accelerating builds by 30\%.}
+    \item{Implemented a production access-provisioning workflow using per-environment GitHub Apps and GitHub Actions to create Microsoft Entra ID groups, assign users, and configure Power BI workspace access, replacing manual support tickets across approximately 50 clients and reducing onboarding from 1-2 days to approximately 15 minutes.}
+    \item{Designed and built a production, organization-wide Power BI bookmark lifecycle for dashboards monitoring thousands of properties, persisting default and draft report states and promoting draft bookmarks on publication to eliminate manual post-deployment configuration; received positive feedback from 20+ clients.}
+\resumeItemListEnd
+\newpage
+\resumeCompanyHeading{MRI Software (continued)}{Bangalore}
+\resumePositionHeading
+{Software Engineer I (continued)}{Aug 2023 - Dec 2025}
+\vspace{1.5mm}
+\resumeItemListStart
+    \item{Implemented the API and deployment-orchestration layer for metadata-driven Power BI semantic-model customization, retrieving tenant-specific JSON field definitions from the data warehouse and adding custom source columns during deployment without application code changes; adopted by more than half of 55-60 clients.}
+    \item{Implemented production OIDC-based just-in-time provisioning that creates tenant-scoped application accounts on first sign-in using trusted tenant claims administered through Okta, eliminating individual user creation through the administrative UI.}
+    \item{Integrated Azure App Configuration into the production application across eight environments supporting 55-60 clients, replacing static app settings with dynamically refreshed, region-, tenant-, and user-scoped feature flags and eliminating deployments for configuration-only changes.}
+    \item{Received MRI Software's Core Value Award for exemplary contribution and demonstrating company core values (Q1 2025).}
 \resumeItemListEnd
