@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "year": "2025",
+    "title": "MRI Software Core Value Award",
+    "note": "Recognition awarded by MRI Software in Q1 2025.",
+    "companyId": 1,
+    "resumeText": "MRI Software Core Value Award (Q1 2025)."
+  },
+  {
+    "id": 2,
+    "year": "2023",
+    "title": "IEEE publication — JOTE",
+    "note": "Co-authored research on concise meeting summaries from audio and video inputs."
+  },
+  {
+    "id": 3,
+    "year": "Achievement",
+    "title": "Top 10% on LeetCode",
+    "note": "Reached a rating of 1690."
+  },
+  {
+    "id": 4,
+    "year": "Hackathon",
+    "title": "1st place — FIL Bangalore",
+    "note": "Blockchain hackathon organized by Huddle and IPFS."
+  }
+]

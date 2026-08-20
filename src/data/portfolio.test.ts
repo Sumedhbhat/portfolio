@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { buildGraph } from "../features/graph/buildGraph";
 import { portfolio } from "./portfolio";
+import { portfolioSchema } from "./schema";
 
 describe("canonical portfolio data", () => {
   it("keeps company references valid and identifiers unique", () => {
@@ -16,5 +17,24 @@ describe("canonical portfolio data", () => {
     expect(graph.nodes.filter((node) => node.type === "position")).toHaveLength(portfolio.positions.length);
     expect(graph.nodes.filter((node) => node.type === "work")).toHaveLength(portfolio.professionalWork.length);
     expect(graph.nodes.filter((node) => node.type === "education")).toHaveLength(portfolio.education.length);
+  });
+
+  it("rejects malformed domain data at runtime", () => {
+    const invalidPortfolio = structuredClone(portfolio);
+    invalidPortfolio.profile.email = "not-an-email";
+    expect(portfolioSchema.safeParse(invalidPortfolio).success).toBe(false);
+  });
+
+  it("rejects references to companies that do not exist", () => {
+    const invalidPortfolio = structuredClone(portfolio);
+    invalidPortfolio.positions[0].companyId = 999;
+    const result = portfolioSchema.safeParse(invalidPortfolio);
+
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues).toContainEqual(expect.objectContaining({
+        path: ["positions", 0, "companyId"],
+      }));
+    }
   });
 });

@@ -5,7 +5,7 @@ This repository builds two presentations from one canonical career record:
 - a React portfolio with Reader, Query Console, and Career Graph experiences;
 - a generated LaTeX resume published as a PDF.
 
-All authored career content lives in [`data/portfolio.json`](data/portfolio.json). React reads it directly, DuckDB tables and graph nodes are derived from it at runtime, and `scripts/generate-resume.mjs` turns it into LaTeX during the resume build.
+All authored career content lives in domain-level JSON files under [`data/portfolio/`](data/portfolio/). [`src/data/portfolio.ts`](src/data/portfolio.ts) validates and composes them into one typed portfolio record. React, DuckDB, the career graph, and the résumé generator all consume that same record.
 
 ## Development
 

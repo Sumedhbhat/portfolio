@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "MRI Software",
+    "location": "Bangalore",
+    "displayLocation": "Bengaluru, India",
+    "description": "Full-stack and applied AI delivery across backend APIs, frontend workflows, identity, automation, production operations, and engineering mentorship for 55–60 client environments."
+  },
+  {
+    "id": 2,
+    "name": "Epicor",
+    "location": "Bangalore",
+    "displayLocation": "Bengaluru, India",
+    "description": "Backend feature development and defect resolution across .NET services and SQL-backed product workflows."
+  }
+]

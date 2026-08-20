@@ -2,28 +2,37 @@
 
 ## One source of truth
 
-Edit career content only in `data/portfolio.json`. It owns the profile, companies, positions, professional work, projects, skills, recognition, and education used everywhere else.
+Edit career content only in the domain files under `data/portfolio/`. Together they form the canonical portfolio record used everywhere else. Array order is presentation order, so append or move records deliberately and keep existing IDs stable.
 
 Do not copy this content into React components, SQL seed statements, graph configuration, or LaTeX files:
 
-- `src/data/portfolio.ts` provides typed selectors for the React app.
+- `src/data/portfolio.ts` is the only composition point. It imports every domain file, validates the complete record, and provides typed selectors.
+- `src/data/schema.ts` defines the runtime schemas and derives the TypeScript types from them.
 - `src/features/query/database.ts` derives DuckDB tables from the same data.
 - `src/features/graph/buildGraph.ts` derives graph nodes and relationships from it.
-- `scripts/generate-resume.mjs` generates `build/generated/resume-content.tex` for LaTeX.
+- `scripts/generate-resume.ts` consumes the composed record and generates `build/generated/resume-content.tex` for LaTeX.
 
 The generated LaTeX file is build output and must not be committed or edited.
 
 ## Project map
 
 ```text
-data/portfolio.json             canonical career content
+data/portfolio/                 canonical career content by domain
+  profile.json                  identity, contact details, and summaries
+  companies.json                employers
+  positions.json                role history, linked by companyId
+  professional-work.json        work points, linked by companyId
+  projects.json                 professional, public, and research projects
+  skills.json                   grouped technical skills
+  recognition.json              awards and achievements
+  education.json                education history
 src/App.tsx                     edition routing
 src/components/                 shared React components
 src/features/reader/            primary book experience
 src/features/query/             DuckDB console and database projection
 src/features/graph/             D3 career graph and graph projection
 src/styles/                     styles split by experience
-scripts/generate-resume.mjs     JSON-to-LaTeX generator
+scripts/generate-resume.ts      typed portfolio-to-LaTeX generator
 source/                         stable LaTeX layout and commands
 ```
 
@@ -31,13 +40,14 @@ The root `index.html` is only Vite’s mount document. It contains no portfolio 
 
 ## Updating content
 
-1. Edit the relevant record in `data/portfolio.json`.
+1. Edit the relevant domain file under `data/portfolio/`.
 2. Keep IDs stable because positions, work, recognition, and graph links refer to them.
-3. Use `resumeBullet` when a professional-work item needs resume-specific phrasing; the web description and impact remain part of that same canonical record.
-4. Run `make check`.
-5. Review both the React app and `build/Sumedh_S_Bhat.pdf` before opening a pull request.
+3. Preserve array order unless you intend to change the displayed and résumé order.
+4. Use `resumeBullet` when a professional-work item needs resume-specific phrasing; the web description and impact remain part of that same canonical record.
+5. Run `make check`.
+6. Review both the React app and `build/Sumedh_S_Bhat.pdf` before opening a pull request.
 
-The tests reject broken company references and duplicate identifiers. The resume generator also validates the data before emitting LaTeX.
+Zod validates the loaded JSON at runtime because TypeScript types alone cannot verify external JSON values. The schema rejects missing, misspelled, or incorrectly typed fields; its cross-record checks reject duplicate identifiers and broken company references before any projection is built.
 
 ## React development
 

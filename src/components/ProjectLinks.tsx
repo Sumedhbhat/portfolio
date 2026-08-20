@@ -1,4 +1,4 @@
-import type { ProjectLink } from "../data/types";
+import type { ProjectLink } from "../data/schema";
 
 interface ProjectLinksProps {
   links: ProjectLink[];

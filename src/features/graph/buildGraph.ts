@@ -1,4 +1,4 @@
-import type { PortfolioData } from "../../data/types";
+import type { PortfolioData } from "../../data/schema";
 
 export const graphTypeLabels = {
   person: "Person",
