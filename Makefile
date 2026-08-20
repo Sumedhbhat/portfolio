@@ -3,9 +3,10 @@ SHELL := /bin/sh
 SOURCE := source/resume.tex
 PORTFOLIO_SOURCES := $(wildcard data/portfolio/*.json) src/data/portfolio.ts src/data/schema.ts
 RESUME_GENERATOR_SOURCES := scripts/generate-resume.ts \
-	src/resume/create-resume-projection.ts \
 	src/resume/escape-latex.ts \
-	src/resume/render-resume.ts
+	src/resume/render-resume.ts \
+	src/resume/section-order.ts \
+	$(filter-out %.test.ts,$(wildcard src/resume/sections/*.ts))
 BUILD_DIR := build
 GENERATED_TEX := $(BUILD_DIR)/generated/resume-content.tex
 TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(GENERATED_TEX)
