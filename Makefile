@@ -1,37 +1,29 @@
 SHELL := /bin/sh
 
 SOURCE := source/resume.tex
-PORTFOLIO_SOURCES := $(wildcard data/portfolio/*.json) src/data/portfolio.ts src/data/schema.ts
-RESUME_GENERATOR_SOURCES := scripts/generate-resume.ts \
-	src/resume/escape-latex.ts \
-	src/resume/render-resume.ts \
-	src/resume/section-order.ts \
-	$(filter-out %.test.ts,$(wildcard src/resume/sections/*.ts))
 BUILD_DIR := build
-GENERATED_TEX := $(BUILD_DIR)/generated/resume-content.tex
-TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(GENERATED_TEX)
+# ChkTeX treats Lua strings embedded in TeX as TeX source. Those section files are
+# validated by the Lua test and the full LuaLaTeX build instead.
+CHK_TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) \
+	$(wildcard source/utils/*.tex) source/sections/summary.tex
 PDF := $(BUILD_DIR)/Sumedh_S_Bhat.pdf
 LATEXMK := latexmk
 
-.PHONY: all build check generate lint test web-check clean
+.PHONY: all build check lint test web-check clean
 
 all: check
 
-generate: $(GENERATED_TEX)
-
-$(GENERATED_TEX): $(PORTFOLIO_SOURCES) $(RESUME_GENERATOR_SOURCES)
-	@npm run generate:resume --silent
-
-build: $(GENERATED_TEX)
+build:
 	@mkdir -p $(BUILD_DIR)
-	$(LATEXMK) -pdf -file-line-error -halt-on-error -interaction=nonstopmode \
+	$(LATEXMK) -lualatex -file-line-error -halt-on-error -interaction=nonstopmode \
 		-outdir=$(BUILD_DIR) -jobname=Sumedh_S_Bhat $(SOURCE)
 
-lint: $(GENERATED_TEX)
-	chktex -q -l .chktexrc $(TEX_SOURCES)
+lint:
+	chktex -q -I0 -l .chktexrc $(CHK_TEX_SOURCES)
 
 test:
 	@npm test
+	@texlua tests/resume-data.lua
 
 web-check:
 	@npm run build
@@ -45,5 +37,5 @@ check: test lint build web-check
 	@echo "Created $(PDF)"
 
 clean:
-	$(LATEXMK) -C -outdir=$(BUILD_DIR) -jobname=Sumedh_S_Bhat $(SOURCE)
+	$(LATEXMK) -C -lualatex -outdir=$(BUILD_DIR) -jobname=Sumedh_S_Bhat $(SOURCE)
 	rm -rf $(BUILD_DIR) dist

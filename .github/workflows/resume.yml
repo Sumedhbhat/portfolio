@@ -38,7 +38,6 @@ jobs:
         run: |
           npm ci
           npm run check
-          make generate
 
       - name: Lint and compile LaTeX
         uses: xu-cheng/latex-action@v4
@@ -46,9 +45,10 @@ jobs:
           root_file: source/resume.tex
           pre_compile: |
             mkdir -p build
+            texlua tests/resume-data.lua
             make lint
           args: >-
-            -pdf
+            -lualatex
             -file-line-error
             -halt-on-error
             -interaction=nonstopmode

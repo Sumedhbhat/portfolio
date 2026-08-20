@@ -6,21 +6,8 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
     "types": ["node"],
     "noEmit": true
   },
-  "include": [
-    "vite.config.ts",
-    "scripts/**/*.ts",
-    "src/data/portfolio.ts",
-    "src/data/schema.ts",
-    "src/resume/escape-latex.ts",
-    "src/resume/render-resume.ts",
-    "src/resume/section-order.ts",
-    "src/resume/sections/*.ts",
-    "data/portfolio/*.json"
-  ],
-  "exclude": ["src/**/*.test.ts"]
+  "include": ["vite.config.ts"]
 }

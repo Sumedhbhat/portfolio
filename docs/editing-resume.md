@@ -1,6 +1,6 @@
 # Editing the resume
 
-The portfolio JSON owns career facts. The files under `src/resume/sections/` own how each résumé section appears in LaTeX.
+The portfolio JSON owns career facts. The files under `source/sections/` own how each résumé section appears. LuaLaTeX reads the JSON directly, so there is no generated TypeScript template between the data and the résumé.
 
 ## Add a position or experience
 
@@ -18,35 +18,33 @@ The PDF uses `resumeDates` from positions and `resumeBullet` from professional w
 
 ## Add a résumé section
 
-1. Add the section's career facts to the appropriate file under `data/portfolio/`. If the facts form a new domain collection, add a JSON file and register it in `src/data/schema.ts` and `src/data/portfolio.ts`.
-2. Create one renderer under `src/resume/sections/`, such as `certifications.ts`.
-3. Export a function with this shape:
+1. Add the section's career facts to the appropriate file under `data/portfolio/`.
+2. Create one TeX file under `source/sections/`, such as `certifications.tex`.
+3. Read the JSON collection through `resume.data` inside a `luacode*` block:
 
-```ts
-import type { PortfolioData } from "../../data/schema";
-
-export function renderCertificationsSection(data: PortfolioData) {
-  return [
-    "%-----------CERTIFICATIONS-----------------",
-    "\\section{\\textbf{Certifications}}",
-    // Return one LaTeX line per array item.
-  ];
-}
+```tex
+\section{\textbf{Certifications}}
+\begin{luacode*}
+for _, certification in ipairs(resume.data.certifications) do
+  resume.line("\\textbf{" .. resume.escape(certification.name) .. "}")
+end
+\end{luacode*}
 ```
 
-4. Import the function in `src/resume/section-order.ts` and add it where the section should appear.
-5. Add a focused test beside the section file, then run `make check`.
+4. Add `\input{source/sections/certifications}` at the intended position in `source/resume.tex`.
+5. If this is a new domain collection, also register its JSON file in `src/data/schema.ts`, `src/data/portfolio.ts`, and `source/lib/resume-data.lua`.
+6. Add a data validation test, then run `make check`.
 
 ## Change an existing section
 
 Each section has one source file:
 
 ```text
-src/resume/sections/profile.ts      contact commands used by the header
-src/resume/sections/summary.ts      summary
-src/resume/sections/experience.ts   companies, positions, bullets, recognition
-src/resume/sections/skills.ts       technical skills
-src/resume/sections/education.ts    education
+source/sections/profile.tex      contact commands used by the header
+source/sections/summary.tex      summary
+source/sections/experience.tex   companies, positions, bullets, recognition
+source/sections/skills.tex       technical skills
+source/sections/education.tex    education
 ```
 
-`src/resume/section-order.ts` controls the order. `src/resume/escape-latex.ts` handles special characters. `scripts/generate-resume.ts` only writes the generated file and normally needs no editing.
+`source/resume.tex` controls the order. `source/lib/resume-data.lua` loads JSON, finds related records, and escapes special characters. Most résumé changes only touch JSON or one section file.

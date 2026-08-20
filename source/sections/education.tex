@@ -1,0 +1,12 @@
+%-----------EDUCATION-----------------
+\section{\textbf{Education}}
+\resumeSubHeadingListStart
+\begin{luacode*}
+for _, education in ipairs(resume.data.education) do
+  resume.line("\\resumeSubheading")
+  resume.line("  {" .. resume.escape(education.institution) .. "}{CGPA: \\textbf{" .. resume.escape(education.cgpa) .. "}}")
+  resume.line("  {" .. resume.escape(education.degree) .. "}{" .. education.startYear .. " - " .. education.endYear .. "}")
+end
+\end{luacode*}
+\resumeSubHeadingListEnd
+\vspace{-1mm}

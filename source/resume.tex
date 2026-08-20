@@ -1,6 +1,6 @@
 %-------------------------
 % Resume in LaTeX
-% Content: generated from the canonical portfolio record
+% Content: read directly from the canonical portfolio record
 % License: MIT
 %-------------------------
 
@@ -10,11 +10,16 @@
 \input{source/config/packages}
 \input{source/config/layout}
 \input{source/utils/resume-commands}
+\directlua{resume = dofile("source/lib/resume-data.lua")}
 
 \begin{document}
 \fontfamily{qhv}\selectfont
 
-% Generated from the same canonical data used by the React portfolio and DuckDB.
-\input{build/generated/resume-content}
+% Section order is explicit so adding or moving a section is a one-line edit.
+\input{source/sections/profile}
+\input{source/sections/summary}
+\input{source/sections/experience}
+\input{source/sections/skills}
+\input{source/sections/education}
 
 \end{document}

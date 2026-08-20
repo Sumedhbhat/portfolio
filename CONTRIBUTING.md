@@ -8,16 +8,13 @@ Do not copy this content into React components, SQL seed statements, graph confi
 
 - `src/data/portfolio.ts` is the only composition point. It imports every domain file, validates the complete record, and provides typed selectors.
 - `src/data/schema.ts` defines the runtime schemas and derives the TypeScript types from them.
-- `src/resume/sections/` gives every résumé section its own renderer and focused tests.
-- `src/resume/section-order.ts` is the single list used to add, remove, or reorder sections.
-- `src/resume/render-resume.ts` assembles the ordered sections into the generated LaTeX document.
-- `src/resume/escape-latex.ts` owns LaTeX escaping and punctuation conversion.
+- `source/lib/resume-data.lua` loads the JSON for LuaLaTeX and owns LaTeX escaping.
+- `source/sections/` gives every résumé section its own authored `.tex` file.
+- `source/resume.tex` contains the explicit section order.
 - `src/features/query/database.ts` derives DuckDB tables from the same data.
 - `src/features/graph/buildGraph.ts` derives graph nodes and relationships from it.
-- `scripts/generate-resume.ts` consumes the composed record and generates `build/generated/resume-content.tex` for LaTeX.
 
-The generated LaTeX file is build output and must not be committed or edited.
-For human editing workflows, see `docs/editing-resume.md`.
+The PDF build does not generate an intermediate template. LuaLaTeX reads the canonical JSON while compiling the authored section files. For human editing workflows, see `docs/editing-resume.md`.
 
 ## Project map
 
@@ -37,9 +34,9 @@ src/features/reader/            primary book experience
 src/features/query/             DuckDB console and database projection
 src/features/graph/             D3 career graph and graph projection
 src/styles/                     styles split by experience
-src/resume/                     résumé projection, rendering, and tests
-scripts/generate-resume.ts      generated-file entry point
-source/                         stable LaTeX layout and commands
+source/sections/                one authored TeX file per résumé section
+source/lib/resume-data.lua      JSON loading and LaTeX-safe text conversion
+source/resume.tex               document setup and section order
 ```
 
 The root `index.html` is only Vite’s mount document. It contains no portfolio data, templates, styles, or application behavior.
@@ -74,12 +71,11 @@ npm run check  # both of the above
 
 Keep presentation code inside the feature that owns it. Shared data selectors belong in `src/data/`; small reusable UI belongs in `src/components/`.
 
-## Resume generation
+## Résumé build
 
-Generate the intermediate LaTeX and build the PDF:
+Build the PDF directly from the JSON and TeX section files:
 
 ```sh
-make generate
 make build
 ```
 
@@ -89,7 +85,7 @@ Run the complete validation suite:
 make check
 ```
 
-This validates the canonical data, runs React tests and type checking, builds the production site, lints generated and static LaTeX, compiles the PDF, and fails on configured layout warnings.
+This validates the canonical data, checks the Lua JSON loader, runs React tests and type checking, builds the production site, lints the authored LaTeX, compiles the PDF with LuaLaTeX, and fails on configured layout warnings.
 
 ## Releases
 

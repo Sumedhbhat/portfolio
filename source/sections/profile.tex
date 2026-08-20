@@ -1,0 +1,16 @@
+% Contact commands consumed by source/header.tex.
+\begin{luacode*}
+local profile = resume.data.profile
+resume.define("resumeName", profile.name)
+resume.define("resumePhone", profile.phone)
+resume.define("resumeEmail", profile.email)
+resume.define("resumeRole", profile.role)
+resume.define("resumeFocus", profile.focus)
+resume.define("resumeLocation", profile.location)
+resume.define("resumeGithubUrl", profile.github)
+resume.define("resumeGithubLabel", profile.githubLabel)
+resume.define("resumeLinkedinUrl", profile.linkedin)
+resume.define("resumeLinkedinLabel", profile.linkedinLabel)
+\end{luacode*}
+
+\input{source/header}

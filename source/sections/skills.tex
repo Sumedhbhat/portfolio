@@ -1,0 +1,11 @@
+%-----------TECHNICAL SKILLS-----------------
+\section{\textbf{Technical Skills}}
+\begin{itemize}[leftmargin=0.05in, label={}, noitemsep, topsep=1mm]
+\begin{luacode*}
+for _, skill in ipairs(resume.data.skills) do
+  local items = skill.resumeItems or skill.items
+  resume.line("\\item{\\textbf{" .. resume.escape(skill.resumeGroup) .. "}{: " .. resume.escape(table.concat(items, ", ")) .. "}}")
+end
+\end{luacode*}
+\end{itemize}
+\vspace{0mm}
