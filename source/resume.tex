@@ -1,6 +1,6 @@
 %-------------------------
 % Resume in LaTeX
-% Author: Sumedh S Bhat
+% Content: generated from data/portfolio.json
 % License: MIT
 %-------------------------
 
@@ -10,19 +10,11 @@
 \input{source/config/packages}
 \input{source/config/layout}
 \input{source/utils/resume-commands}
-\input{source/personal-info}
 
 \begin{document}
 \fontfamily{qhv}\selectfont
 
-% Reorder these inputs to change the order in the generated resume.
-\input{source/sections/header/section}
-\input{source/sections/summary/section}
-\input{source/sections/experience/section}
-% \input{source/sections/publications/section}
-\input{source/sections/skills/section}
-\input{source/sections/education/section}
-% \input{source/sections/certifications/section}
-% Recognition is included under MRI Software to keep it tied to the awarding employer.
+% Generated from the same canonical data used by the React portfolio and DuckDB.
+\input{build/generated/resume-content}
 
 \end{document}

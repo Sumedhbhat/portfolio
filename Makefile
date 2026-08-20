@@ -1,30 +1,38 @@
 SHELL := /bin/sh
 
 SOURCE := source/resume.tex
-TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(wildcard source/sections/*/*.tex) $(wildcard source/sections/*/*/*.tex)
+DATA := data/portfolio.json
+GENERATOR := scripts/generate-resume.mjs
 BUILD_DIR := build
+GENERATED_TEX := $(BUILD_DIR)/generated/resume-content.tex
+TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(GENERATED_TEX)
 PDF := $(BUILD_DIR)/Sumedh_S_Bhat.pdf
 LATEXMK := latexmk
 
-.PHONY: all build check lint lint-section-includes test clean
+.PHONY: all build check generate lint test web-check clean
 
 all: check
 
-build:
+generate: $(GENERATED_TEX)
+
+$(GENERATED_TEX): $(DATA) $(GENERATOR)
+	@node $(GENERATOR)
+
+build: $(GENERATED_TEX)
 	@mkdir -p $(BUILD_DIR)
 	$(LATEXMK) -pdf -file-line-error -halt-on-error -interaction=nonstopmode \
 		-outdir=$(BUILD_DIR) -jobname=Sumedh_S_Bhat $(SOURCE)
 
-lint: lint-section-includes
+lint: $(GENERATED_TEX)
 	chktex -q -l .chktexrc $(TEX_SOURCES)
 
-lint-section-includes:
-	@sh scripts/lint-section-includes.sh
-
 test:
-	@sh tests/lint-section-includes.test.sh
+	@npm test
 
-check: test lint build
+web-check:
+	@npm run build
+
+check: test lint build web-check
 	@test -s $(PDF)
 	@if grep -Eq 'Overfull \\hbox|fancyhdr Warning' $(BUILD_DIR)/Sumedh_S_Bhat.log; then \
 		echo "Layout warning found in the LaTeX log"; \
@@ -34,4 +42,4 @@ check: test lint build
 
 clean:
 	$(LATEXMK) -C -outdir=$(BUILD_DIR) -jobname=Sumedh_S_Bhat $(SOURCE)
-	rm -rf $(BUILD_DIR)
+	rm -rf $(BUILD_DIR) dist
