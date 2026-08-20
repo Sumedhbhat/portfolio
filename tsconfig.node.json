@@ -16,6 +16,9 @@
     "scripts/**/*.ts",
     "src/data/portfolio.ts",
     "src/data/schema.ts",
+    "src/resume/create-resume-projection.ts",
+    "src/resume/escape-latex.ts",
+    "src/resume/render-resume.ts",
     "data/portfolio/*.json"
   ]
 }

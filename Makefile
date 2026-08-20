@@ -1,8 +1,11 @@
 SHELL := /bin/sh
 
 SOURCE := source/resume.tex
-DATA := $(wildcard data/portfolio/*.json) src/data/portfolio.ts src/data/schema.ts
-GENERATOR := scripts/generate-resume.ts
+PORTFOLIO_SOURCES := $(wildcard data/portfolio/*.json) src/data/portfolio.ts src/data/schema.ts
+RESUME_GENERATOR_SOURCES := scripts/generate-resume.ts \
+	src/resume/create-resume-projection.ts \
+	src/resume/escape-latex.ts \
+	src/resume/render-resume.ts
 BUILD_DIR := build
 GENERATED_TEX := $(BUILD_DIR)/generated/resume-content.tex
 TEX_SOURCES := $(wildcard source/*.tex) $(wildcard source/config/*.tex) $(wildcard source/utils/*.tex) $(GENERATED_TEX)
@@ -15,7 +18,7 @@ all: check
 
 generate: $(GENERATED_TEX)
 
-$(GENERATED_TEX): $(DATA) $(GENERATOR)
+$(GENERATED_TEX): $(PORTFOLIO_SOURCES) $(RESUME_GENERATOR_SOURCES)
 	@npm run generate:resume --silent
 
 build: $(GENERATED_TEX)

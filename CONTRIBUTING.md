@@ -8,6 +8,9 @@ Do not copy this content into React components, SQL seed statements, graph confi
 
 - `src/data/portfolio.ts` is the only composition point. It imports every domain file, validates the complete record, and provides typed selectors.
 - `src/data/schema.ts` defines the runtime schemas and derives the TypeScript types from them.
+- `src/resume/create-resume-projection.ts` owns résumé inclusion, ordering, grouping, and fallback rules.
+- `src/resume/render-resume.ts` turns that projection into the generated LaTeX document.
+- `src/resume/escape-latex.ts` owns LaTeX escaping and punctuation conversion.
 - `src/features/query/database.ts` derives DuckDB tables from the same data.
 - `src/features/graph/buildGraph.ts` derives graph nodes and relationships from it.
 - `scripts/generate-resume.ts` consumes the composed record and generates `build/generated/resume-content.tex` for LaTeX.
@@ -32,7 +35,8 @@ src/features/reader/            primary book experience
 src/features/query/             DuckDB console and database projection
 src/features/graph/             D3 career graph and graph projection
 src/styles/                     styles split by experience
-scripts/generate-resume.ts      typed portfolio-to-LaTeX generator
+src/resume/                     résumé projection, rendering, and tests
+scripts/generate-resume.ts      generated-file entry point
 source/                         stable LaTeX layout and commands
 ```
 
