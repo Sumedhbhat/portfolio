@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid #ffb000; outline-offset: 4px; }
+.external::after { content: " ↗"; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
+.project-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 18px; }
+.project-links a { font-size: 12px; font-weight: 700; text-underline-offset: 4px; }
+.edition-return { position: fixed; z-index: 1000; left: 18px; bottom: 18px; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: #f7f7f2; background: #111318; box-shadow: 0 14px 38px rgba(0,0,0,.32); cursor: pointer; font: 500 11px/1.2 "DM Mono", monospace; letter-spacing: .04em; }
+.edition-return:hover { background: #272b34; }
+.edition-return span { color: #b8bec9; font-size: 15px; }
+.edition-loading { min-height: 100vh; display: grid; place-items: center; color: #d7dfe4; background: #111522; font: 500 12px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}

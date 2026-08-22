@@ -1,6 +1,9 @@
 # LaTeX build output
 build/
 tmp/
+dist/
+node_modules/
+*.tsbuildinfo
 
 # Editor and operating-system files
 .DS_Store

@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "title": "Agora Insights",
+    "kind": "Professional",
+    "status": "Current",
+    "year": "MRI Software",
+    "description": "A cloud-based analytics and business intelligence platform for visualizing, analyzing, and managing large real-estate portfolios. It unifies diverse data sources behind a secure, scalable backend and delivers Power BI Embedded dashboards, self-service reporting, role-based access, customizable visual analytics, and automated deployment workflows.",
+    "tags": [
+      "Angular",
+      ".NET",
+      "EF Core",
+      "Power BI Embedded",
+      "Azure"
+    ],
+    "links": []
+  },
+  {
+    "id": 2,
+    "title": "Agora Intelligence",
+    "kind": "Professional",
+    "status": "In development",
+    "year": "MRI Software",
+    "description": "An applied-AI product that generates property-risk insights through a six-node workflow. I co-designed the architecture, added precomputed benchmarks to reduce token usage, and introduced six-criteria LLM-as-judge evaluation.",
+    "tags": [
+      "Python",
+      "LangGraph",
+      "FastAPI",
+      "MCP",
+      "LLM evaluation"
+    ],
+    "links": []
+  },
+  {
+    "id": 3,
+    "title": "HackerFeed Web",
+    "kind": "Public",
+    "status": "Current",
+    "year": "2026",
+    "description": "A full-stack Hacker News and AI-papers reader with saved favorites, authentication, ingestion, typed API boundaries, observability, and persistent data on Cloudflare.",
+    "tags": [
+      "TanStack Start",
+      "React 19",
+      "Cloudflare Workers",
+      "D1",
+      "tRPC",
+      "WorkOS"
+    ],
+    "links": [
+      {
+        "label": "Repository",
+        "url": "https://github.com/Sumedhbhat/hackerfeed-web"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Staff Engineer’s Path Resource Atlas",
+    "kind": "Public",
+    "status": "Current",
+    "year": "2026",
+    "description": "A filterable chapter-by-chapter index of resources from Tanya Reilly’s book, running DuckDB-Wasm and Drizzle entirely in the browser and deployed through GitHub Pages.",
+    "tags": [
+      "TypeScript",
+      "DuckDB-Wasm",
+      "Drizzle",
+      "GitHub Pages"
+    ],
+    "links": [
+      {
+        "label": "Repository",
+        "url": "https://github.com/Sumedhbhat/staff-engineers-path-resource-atlas"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "JOTE Meeting Summarizer",
+    "kind": "Research",
+    "status": "Published",
+    "year": "2022–23",
+    "description": "A meeting and lecture summarizer that captures audio and optional screen regions, generates concise notes, and exports the result as a PDF. I implemented most of the research prototype and co-authored its paper.",
+    "tags": [
+      "Python",
+      "NLP",
+      "Computer vision",
+      "PDF"
+    ],
+    "links": [
+      {
+        "label": "Repository",
+        "url": "https://github.com/Sumedhbhat/MeetingSummarizer"
+      },
+      {
+        "label": "IEEE paper",
+        "url": "https://ieeexplore.ieee.org/document/10390455"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Face Recognition System",
+    "kind": "Research",
+    "status": "Archive",
+    "year": "2022",
+    "description": "An attendance and access-management system with enrollment, database management, and real-time recognition workflows, developed during earlier machine-learning work.",
+    "tags": [
+      "React",
+      "Node.js",
+      "MySQL",
+      "Computer vision"
+    ],
+    "links": [
+      {
+        "label": "Repository",
+        "url": "https://github.com/Sumedhbhat/FRS"
+      }
+    ]
+  }
+]

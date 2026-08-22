@@ -1,189 +1,96 @@
 # Contributing
 
-Thank you for contributing to Resume Tracker. This guide explains how to update the resume, validate changes, and work with specialized resume variants.
+## One source of truth
 
-## Release rule
+Edit career content only in the domain files under `data/portfolio/`. Together they form the canonical portfolio record used everywhere else. Array order is presentation order, so append or move records deliberately and keep existing IDs stable.
 
-A pull request or an open branch does not publish a resume.
+Do not copy this content into React components, SQL seed statements, graph configuration, or LaTeX files:
 
-A successful push to `master`, including a pull-request merge, automatically publishes the main resume. The workflow creates a tag named `release-master-<run-number>` on that commit and attaches `Sumedh_S_Bhat.pdf`.
+- `src/data/portfolio.ts` is the only composition point. It imports every domain file, validates the complete record, and provides typed selectors.
+- `src/data/schema.ts` defines the runtime schemas and derives the TypeScript types from them.
+- `source/lib/resume-data.lua` loads the JSON for LuaLaTeX and owns LaTeX escaping.
+- `source/sections/` gives every résumé section its own authored `.tex` file.
+- `source/resume.tex` contains the explicit section order.
+- `src/features/query/database.ts` derives DuckDB tables from the same data.
+- `src/features/graph/buildGraph.ts` derives graph nodes and relationships from it.
 
-Specialized resumes are published only when a tag beginning with `resume-` is pushed. The tag may point to a commit on any branch, so a specialized resume can be released without merging that branch into `master`.
+The PDF build does not generate an intermediate template. LuaLaTeX reads the canonical JSON while compiling the authored section files. For human editing workflows, see `docs/editing-resume.md`.
 
-See [`docs/release-management.md`](docs/release-management.md) for the complete release lifecycle.
-
-## Resume organization
-
-The resume is assembled by `source/resume.tex`. Personal details are stored in `source/personal-info.tex`.
-
-Shared LaTeX setup is organized separately:
-
-- `source/config/packages.tex` contains package imports.
-- `source/config/layout.tex` contains page, text, table, and section styling.
-- `source/utils/resume-commands.tex` contains reusable resume commands, list helpers, and column types.
-
-Each category has a folder under `source/sections/`:
-
-- `header/`
-- `summary/`
-- `experience/`
-- `projects/`
-- `skills/`
-- `education/`
-- `certifications/`
-- `achievements/`
-
-Every category folder contains:
-
-- `section.tex`, which controls the category heading and entry order.
-- `_template.tex`, which provides reusable placeholder content.
-- One `.tex` file for each individual entry, or a company folder for experience spanning multiple positions.
-
-The order of the complete resume is controlled by the `\input` lines in `source/resume.tex`. The order within a category is controlled by the `\input` lines in that category's `section.tex`.
-
-## Adding an entry
-
-1. Copy the category's `_template.tex` file.
-2. Give the copied file a descriptive lowercase, hyphen-separated name.
-3. Replace all placeholder content.
-4. Add the `\input` line shown in the template to the category's `section.tex`.
-5. Place the `\input` line where the entry should appear in the resume.
-
-For example, to add an experience:
-
-```sh
-cp source/sections/experience/_template.tex source/sections/experience/company-name.tex
-```
-
-Then add this line to `source/sections/experience/section.tex`:
-
-```tex
-\input{source/sections/experience/company-name}
-```
-
-Do not add `_template.tex` itself to a `section.tex` file. Templates are linted but are not rendered. The `make lint` command fails if any other entry file is missing from its category's `section.tex`.
-
-### Adding multiple positions at one company
-
-Use a company folder when one employer has multiple positions. This renders the company name and location once while keeping each position in its own file:
+## Project map
 
 ```text
-source/sections/experience/company-name/
-├── section.tex
-├── newer-position.tex
-└── earlier-position.tex
+data/portfolio/                 canonical career content by domain
+  profile.json                  identity, contact details, and summaries
+  companies.json                employers
+  positions.json                role history, linked by companyId
+  professional-work.json        work points, linked by companyId
+  projects.json                 professional, public, and research projects
+  skills.json                   grouped technical skills
+  recognition.json              awards and achievements
+  education.json                education history
+src/App.tsx                     edition routing
+src/components/                 shared React components
+src/features/reader/            primary book experience
+src/features/query/             DuckDB console and database projection
+src/features/graph/             D3 career graph and graph projection
+src/styles/                     styles split by experience
+source/sections/                one authored TeX file per résumé section
+source/lib/resume-data.lua      JSON loading and LaTeX-safe text conversion
+source/resume.tex               document setup and section order
 ```
 
-The company folder's `section.tex` owns the shared heading and position order:
+The root `index.html` is only Vite’s mount document. It contains no portfolio data, templates, styles, or application behavior.
 
-```tex
-\resumeCompanyHeading{COMPANY NAME}{LOCATION}
-\input{source/sections/experience/company-name/newer-position}
-\input{source/sections/experience/company-name/earlier-position}
-```
+## Updating content
 
-Each position file owns its title, dates, and bullet points:
+1. Edit the relevant domain file under `data/portfolio/`.
+2. Keep IDs stable because positions, work, recognition, and graph links refer to them.
+3. Preserve array order unless you intend to change the displayed and résumé order.
+4. Use `resumeBullet` when a professional-work item needs resume-specific phrasing; the web description and impact remain part of that same canonical record.
+5. Run `make check`.
+6. Review both the React app and `build/Sumedh_S_Bhat.pdf` before opening a pull request.
 
-```tex
-\resumePositionHeading{JOB TITLE}{START DATE - END DATE}
-\vspace{1.0mm}
-\resumeItemListStart
-    \item{Describe an accomplishment and its measurable result.}
-\resumeItemListEnd
-```
+Zod validates the loaded JSON at runtime because TypeScript types alone cannot verify external JSON values. The schema rejects missing, misspelled, or incorrectly typed fields; its cross-record checks reject duplicate identifiers and broken company references before any projection is built.
 
-Finally, include the company folder from `source/sections/experience/section.tex`:
+## React development
 
-```tex
-\input{source/sections/experience/company-name/section}
-```
-
-The include linter checks both the company folder and its individual position files.
-
-## Optional sections
-
-Summary and Certifications are disabled by default. Enable either one by uncommenting its `\input` line in `source/resume.tex`:
-
-```tex
-\input{source/sections/summary/section}
-\input{source/sections/certifications/section}
-```
-
-## LaTeX content
-
-Escape LaTeX special characters when they should appear as text:
-
-| Character | Write |
-| --- | --- |
-| `%` | `\%` |
-| `&` | `\&` |
-| `#` | `\#` |
-| `_` | `\_` |
-
-Follow the formatting already used by neighboring entries. Avoid changing files in `source/config/` or `source/utils/` unless the change is intended to affect the entire resume.
-
-## Validate changes locally
-
-Run the custom lint-rule tests:
+Install dependencies and start Vite:
 
 ```sh
-make test
+npm install
+npm run dev
 ```
 
-Run syntax and section-include linting:
+Useful commands:
 
 ```sh
-make lint
+npm test       # shared-data and projection tests
+npm run build  # TypeScript and production Vite build
+npm run check  # both of the above
 ```
 
-Compile the PDF:
+Keep presentation code inside the feature that owns it. Shared data selectors belong in `src/data/`; small reusable UI belongs in `src/components/`.
+
+## Résumé build
+
+Build the PDF directly from the JSON and TeX section files:
 
 ```sh
 make build
 ```
 
-Run all checks, including tests, linting, compilation, PDF verification, and configured layout-warning checks:
+Run the complete validation suite:
 
 ```sh
 make check
 ```
 
-The generated PDF is written to `build/Sumedh_S_Bhat.pdf`. Review it visually before opening a pull request or creating a release tag.
+This validates the canonical data, checks the Lua JSON loader, runs React tests and type checking, builds the production site, lints the authored LaTeX, compiles the PDF with LuaLaTeX, and fails on configured layout warnings.
 
-## Pull requests
+## Releases
 
-Pull requests targeting `master` automatically:
+A successful push to `master`, including a merged pull request, publishes the main resume. The workflow creates a `release-master-<run-number>` tag and attaches `Sumedh_S_Bhat.pdf`.
 
-1. Lint every LaTeX source and template file.
-2. Compile the resume.
-3. Verify that a non-empty PDF was generated.
-4. Fail on configured layout warnings.
+Specialized resumes are published only when a tag beginning with `resume-` is pushed. See `docs/release-management.md` for the release lifecycle.
 
-Pull-request checks do not upload the PDF as an Actions artifact and do not create a GitHub release.
-
-After the pull request is merged, the resulting push to `master` runs the checks again. If they pass, the workflow creates a build-numbered `release-master-*` tag and publishes the main resume.
-
-## Specialized resume branches
-
-Use a separate branch for a resume aimed at a specific role when those changes should not become part of the main resume. For example:
-
-```sh
-git switch -c resume/cybersecurity
-make check
-```
-
-The branch may remain separate from `master`. If the specialized resume should be published, create and push a `resume-*` tag that points to the desired commit. See [`docs/release-management.md`](docs/release-management.md) for exact commands and naming behavior.
-
-## Contribution checklist
-
-Before submitting or publishing changes, confirm that:
-
-- Content was added to the correct category folder.
-- A descriptive filename was used.
-- The category's `section.tex` includes the entry in the intended position.
-- LaTeX special characters are escaped.
-- Placeholder text and example links were removed.
-- `make check` passes.
-- The generated PDF was reviewed visually.
-- Changes merged into `master` are ready to be published automatically.
-- A `resume-*` tag is created only when a specialized branch release is intended.
+The Pages workflow builds and deploys the React app from `dist/` whenever its source or canonical data changes on `master`.

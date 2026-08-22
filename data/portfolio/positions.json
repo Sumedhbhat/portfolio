@@ -1,0 +1,32 @@
+[
+  {
+    "id": 2,
+    "companyId": 1,
+    "title": "Software Engineer II",
+    "startDate": "2026-01-01",
+    "endDate": null,
+    "displayDates": "Jan 2026 — Present",
+    "resumeDates": "Jan 2026 - Present",
+    "description": "Own architecture and delivery across full-stack and applied AI work; mentor two junior engineers and review production code for four teammates."
+  },
+  {
+    "id": 1,
+    "companyId": 1,
+    "title": "Software Engineer I",
+    "startDate": "2023-08-01",
+    "endDate": "2025-12-31",
+    "displayDates": "Aug 2023 — Dec 2025",
+    "resumeDates": "Aug 2023 - Dec 2025",
+    "description": "Delivered platform orchestration, multi-tenant services, production monitoring, identity automation, and reporting workflows across 55–60 client environments before progressing to Software Engineer II."
+  },
+  {
+    "id": 3,
+    "companyId": 2,
+    "title": "Product Developer Intern",
+    "startDate": "2023-02-01",
+    "endDate": "2023-06-30",
+    "displayDates": "Feb 2023 — Jun 2023",
+    "resumeDates": "Feb 2023 - Jun 2023",
+    "description": "Contributed to backend feature development and defect resolution using C#, .NET Core, EF Core, SQL Server, and Azure DevOps."
+  }
+]

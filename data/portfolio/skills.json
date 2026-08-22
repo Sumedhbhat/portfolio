@@ -1,0 +1,98 @@
+[
+  {
+    "id": "languages",
+    "group": "Languages",
+    "resumeGroup": "Languages",
+    "items": [
+      "C#",
+      "TypeScript",
+      "Python",
+      "SQL",
+      "JavaScript"
+    ]
+  },
+  {
+    "id": "backend",
+    "group": "Backend & APIs",
+    "resumeGroup": "Backend and APIs",
+    "items": [
+      ".NET",
+      "ASP.NET Core",
+      "EF Core",
+      "FastAPI",
+      "REST APIs",
+      "SQL Server"
+    ]
+  },
+  {
+    "id": "frontend",
+    "group": "Frontend",
+    "resumeGroup": "Frontend",
+    "items": [
+      "Angular",
+      "RxJS",
+      "React",
+      "TanStack Start",
+      "Nuxt"
+    ],
+    "resumeItems": [
+      "Angular",
+      "RxJS",
+      "React"
+    ]
+  },
+  {
+    "id": "ai",
+    "group": "Applied AI",
+    "resumeGroup": "Applied AI",
+    "items": [
+      "LangGraph",
+      "MCP",
+      "LLM evaluation",
+      "NLP"
+    ],
+    "resumeItems": [
+      "LangGraph",
+      "MCP",
+      "LLM Evaluation"
+    ]
+  },
+  {
+    "id": "security",
+    "group": "Security",
+    "resumeGroup": "Security",
+    "items": [
+      "OIDC",
+      "Microsoft Entra ID",
+      "multi-tenant authorization",
+      "row-level access control"
+    ],
+    "resumeItems": [
+      "OIDC",
+      "Microsoft Entra ID",
+      "Multi-Tenant Authorization",
+      "Row-Level Access Control"
+    ]
+  },
+  {
+    "id": "delivery",
+    "group": "Delivery & quality",
+    "resumeGroup": "Testing and CI/CD",
+    "items": [
+      "xUnit",
+      "Moq",
+      "Cypress",
+      "Vitest",
+      "GitHub Actions",
+      "Azure DevOps",
+      "Cloudflare"
+    ],
+    "resumeItems": [
+      "xUnit",
+      "Moq",
+      "Cypress",
+      "GitHub Actions",
+      "Azure DevOps"
+    ]
+  }
+]

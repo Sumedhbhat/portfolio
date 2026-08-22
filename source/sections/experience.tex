@@ -1,0 +1,33 @@
+%-----------EXPERIENCE-----------------
+\section{\textbf{Experience}}
+\resumeSubHeadingListStart
+\begin{luacode*}
+local data = resume.data
+
+for _, company in ipairs(data.companies) do
+  local positions = resume.for_company(data.positions, company.id)
+  local work = resume.for_company(data.professionalWork, company.id)
+
+  -- A company needs a role heading and at least one evidence bullet.
+  if #positions > 0 and #work > 0 then
+    resume.line("\\resumeCompany{" .. resume.escape(company.name) .. "}{" .. resume.escape(company.location) .. "}{")
+    for _, position in ipairs(positions) do
+      resume.line("    \\resumePosition{" .. resume.escape(position.title) .. "}{" .. resume.escape(position.resumeDates) .. "}")
+    end
+    resume.line("}")
+    resume.line("\\resumeItemListStart")
+    for _, item in ipairs(work) do
+      resume.line("    \\item{" .. resume.escape(item.resumeBullet) .. "}")
+    end
+    resume.line("\\resumeItemListEnd")
+
+    for _, recognition in ipairs(resume.for_company(data.recognition, company.id)) do
+      if recognition.resumeText then
+        resume.line("\\noindent\\hspace{3ex}\\small{\\textbf{Recognition:} " .. resume.escape(recognition.resumeText) .. "}")
+      end
+    end
+  end
+end
+\end{luacode*}
+\resumeSubHeadingListEnd
+\vspace{-3mm}

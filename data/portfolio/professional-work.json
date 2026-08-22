@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "companyId": 1,
+    "title": "Deployment orchestration platform",
+    "status": "Delivered",
+    "description": "Led end-to-end delivery of a .NET and Azure Functions platform that coordinates scheduled CI/CD workflows and exposes rollout state through a REST status API across 55–60 client environments.",
+    "impact": "Replaced a manually monitored monthly rollout that required 1–2 days.",
+    "resumeBullet": "Led end-to-end delivery of a production deployment orchestration platform using .NET, Azure Functions, scheduled CI/CD workflows, and a REST status API across 55–60 client environments, replacing a manually monitored monthly rollout that required 1–2 days.",
+    "tags": [
+      ".NET",
+      "Azure Functions",
+      "REST",
+      "CI/CD"
+    ]
+  },
+  {
+    "id": 2,
+    "companyId": 1,
+    "title": "Multi-tenant connection service",
+    "status": "Delivered",
+    "description": "Architected a .NET proxy and connection-management service across six Kubernetes replicas, with tenant-, group-, and user-scoped authorization enforced through backend filters and row-level controls.",
+    "impact": "Supported approximately 600 concurrent connections while avoiding repeated 6–7 second setup latency and socket exhaustion.",
+    "resumeBullet": "Architected a multi-tenant .NET proxy and connection-management service across six Kubernetes replicas, eliminating repeated setup latency of 6 to 7 seconds and supporting approximately 600 concurrent connections without socket exhaustion; enforced tenant-, group-, and user-scoped authorization through backend query filters and row-level access controls.",
+    "tags": [
+      ".NET",
+      "Kubernetes",
+      "Authorization",
+      "SQL"
+    ]
+  },
+  {
+    "id": 3,
+    "companyId": 1,
+    "title": "Production monitoring system",
+    "status": "Delivered",
+    "description": "Built a full-stack tracking UI, orchestration layer, and server- and region-level health APIs for 55–60 clients, including automated incidents, retries, and recovery tracking.",
+    "impact": "Surfaced failures that had previously remained undetected for up to a month.",
+    "resumeBullet": "Built a full-stack production monitoring system spanning a tracking UI, orchestration, and server- and region-level health APIs for 55–60 clients; automated incidents, retries, and recovery tracking while exposing failures previously undetected for up to a month.",
+    "tags": [
+      "Angular",
+      ".NET",
+      "Health APIs",
+      "Automation"
+    ]
+  },
+  {
+    "id": 4,
+    "companyId": 1,
+    "title": "Property-risk insight workflow",
+    "status": "Evaluating",
+    "description": "Owned technical planning and co-designed a six-node applied AI workflow that generates up to ten daily property-risk insights per user. Added precomputed benchmarks and initiated a six-criteria evaluation system.",
+    "impact": "Reduced token usage while establishing a repeatable LLM-as-judge quality process.",
+    "resumeBullet": "Owned technical planning and co-designed a six-node applied AI workflow using Python, LangGraph, FastAPI, and MCP to generate up to 10 daily property-risk insights per user; added precomputed benchmarks to reduce token usage and initiated six-criteria LLM-as-judge evaluation.",
+    "tags": [
+      "Python",
+      "LangGraph",
+      "FastAPI",
+      "MCP",
+      "LLM evaluation"
+    ]
+  },
+  {
+    "id": 5,
+    "companyId": 1,
+    "title": "Identity and access provisioning",
+    "status": "Delivered",
+    "description": "Automated identity and application access across approximately 50 clients using GitHub Apps, GitHub Actions, and Microsoft Entra ID groups.",
+    "impact": "Reduced ticket-driven onboarding from 1–2 days to approximately 15 minutes.",
+    "resumeBullet": "Automated identity and application-access provisioning with GitHub Apps, GitHub Actions, and Microsoft Entra ID groups across approximately 50 clients, reducing ticket-driven onboarding from 1–2 days to approximately 15 minutes.",
+    "tags": [
+      "GitHub Apps",
+      "GitHub Actions",
+      "Entra ID",
+      "OIDC"
+    ]
+  },
+  {
+    "id": 6,
+    "companyId": 1,
+    "title": "Dashboard state and publishing",
+    "status": "Delivered",
+    "description": "Built state-saving for reports monitoring thousands of properties, preserving default and draft views and promoting drafts when a report is published.",
+    "impact": "Removed manual post-deployment setup and received positive feedback from 20+ clients.",
+    "resumeBullet": "Built a dashboard state-saving feature for reports monitoring thousands of properties, preserving default and draft views and promoting drafts on publication; eliminated manual post-deployment configuration and received positive feedback from 20+ clients.",
+    "tags": [
+      "Angular",
+      "RxJS",
+      "State design",
+      "Publishing"
+    ]
+  },
+  {
+    "id": 7,
+    "companyId": 1,
+    "title": "Engineering mentorship and review",
+    "status": "Current",
+    "description": "Mentor two junior engineers on frontend design and implementation and review production code for four teammates across full-stack and applied AI work.",
+    "impact": "Provide architectural guidance and knowledge transfer across the team.",
+    "resumeBullet": "Mentor two junior engineers on frontend design and implementation; review production code for four teammates across full-stack and applied AI work, providing architectural guidance and knowledge transfer.",
+    "tags": [
+      "Mentoring",
+      "Code review",
+      "Architecture",
+      "Frontend"
+    ]
+  },
+  {
+    "id": 8,
+    "companyId": 2,
+    "title": "Backend product development",
+    "status": "Completed",
+    "description": "Contributed to backend feature development and defect resolution using C#, .NET Core, EF Core, SQL Server, and Azure DevOps.",
+    "impact": "Delivered backend features and production defect fixes during the internship.",
+    "resumeBullet": "Contributed to backend feature development and defect resolution using C#, .NET Core, EF Core, SQL Server, and Azure DevOps.",
+    "tags": [
+      "C#",
+      ".NET Core",
+      "EF Core",
+      "SQL Server",
+      "Azure DevOps"
+    ]
+  }
+]
