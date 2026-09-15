@@ -34,11 +34,11 @@
     "companyId": 1,
     "title": "Production monitoring system",
     "status": "Delivered",
-    "description": "Built a full-stack tracking UI, orchestration layer, and server- and region-level health APIs for 55–60 clients, including automated incidents, retries, and recovery tracking.",
+    "description": "Built a React full-stack tracking UI backed by .NET orchestration and server- and region-level health APIs for 55–60 clients, including automated incidents, retries, and recovery tracking.",
     "impact": "Surfaced failures that had previously remained undetected for up to a month.",
-    "resumeBullet": "Built a full-stack production monitoring system spanning a tracking UI, orchestration, and server- and region-level health APIs for 55–60 clients; automated incidents, retries, and recovery tracking while exposing failures previously undetected for up to a month.",
+    "resumeBullet": "Built a React production monitoring UI integrating .NET orchestration and server- and region-level health APIs for 55–60 clients; automated incidents, retries, and recovery tracking while exposing failures previously undetected for up to a month.",
     "tags": [
-      "Angular",
+      "React",
       ".NET",
       "Health APIs",
       "Automation"
@@ -49,10 +49,12 @@
     "companyId": 1,
     "title": "Property-risk insight workflow",
     "status": "Evaluating",
-    "description": "Owned technical planning and co-designed a six-node applied AI workflow that generates up to ten daily property-risk insights per user. Added precomputed benchmarks and initiated a six-criteria evaluation system.",
+    "description": "Worked on Agora Intelligence with React and .NET while co-designing a six-node applied AI workflow that generates up to ten daily property-risk insights per user. Added precomputed benchmarks and initiated a six-criteria evaluation system.",
     "impact": "Reduced token usage while establishing a repeatable LLM-as-judge quality process.",
-    "resumeBullet": "Owned technical planning and co-designed a six-node applied AI workflow using Python, LangGraph, FastAPI, and MCP to generate up to 10 daily property-risk insights per user; added precomputed benchmarks to reduce token usage and initiated six-criteria LLM-as-judge evaluation.",
+    "resumeBullet": "Built React and .NET product functionality for Agora Intelligence while co-designing a six-node applied AI workflow with Python, LangGraph, FastAPI, and MCP; added precomputed benchmarks to reduce token usage and initiated six-criteria LLM-as-judge evaluation.",
     "tags": [
+      "React",
+      ".NET",
       "Python",
       "LangGraph",
       "FastAPI",
@@ -80,12 +82,11 @@
     "companyId": 1,
     "title": "Dashboard state and publishing",
     "status": "Delivered",
-    "description": "Built state-saving for reports monitoring thousands of properties, preserving default and draft views and promoting drafts when a report is published.",
+    "description": "Built React dashboard state-saving for Power BI reports monitoring thousands of properties, preserving default and draft views and promoting drafts when a report is published.",
     "impact": "Removed manual post-deployment setup and received positive feedback from 20+ clients.",
-    "resumeBullet": "Built a dashboard state-saving feature for reports monitoring thousands of properties, preserving default and draft views and promoting drafts on publication; eliminated manual post-deployment configuration and received positive feedback from 20+ clients.",
+    "resumeBullet": "Built React dashboard state-saving for reports monitoring thousands of properties, preserving default and draft views and promoting drafts on publication; eliminated manual post-deployment configuration and received positive feedback from 20+ clients.",
     "tags": [
-      "Angular",
-      "RxJS",
+      "React",
       "State design",
       "Publishing"
     ]

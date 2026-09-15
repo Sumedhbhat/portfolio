@@ -29,16 +29,16 @@
     "group": "Frontend",
     "resumeGroup": "Frontend",
     "items": [
+      "React",
       "Angular",
       "RxJS",
-      "React",
       "TanStack Start",
       "Nuxt"
     ],
     "resumeItems": [
-      "Angular",
-      "RxJS",
-      "React"
+      "React",
+      "TypeScript",
+      "RxJS"
     ]
   },
   {

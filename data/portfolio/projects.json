@@ -5,9 +5,9 @@
     "kind": "Professional",
     "status": "Current",
     "year": "MRI Software",
-    "description": "A cloud-based analytics and business intelligence platform for visualizing, analyzing, and managing large real-estate portfolios. It unifies diverse data sources behind a secure, scalable backend and delivers Power BI Embedded dashboards, self-service reporting, role-based access, customizable visual analytics, and automated deployment workflows.",
+    "description": "A cloud-based analytics and business intelligence platform for visualizing, analyzing, and managing large real-estate portfolios. I built React frontend workflows while integrating secure .NET services, Power BI Embedded dashboards, self-service reporting, role-based access, customizable visual analytics, and automated deployment workflows.",
     "tags": [
-      "Angular",
+      "React",
       ".NET",
       "EF Core",
       "Power BI Embedded",
@@ -21,8 +21,10 @@
     "kind": "Professional",
     "status": "In development",
     "year": "MRI Software",
-    "description": "An applied-AI product that generates property-risk insights through a six-node workflow. I co-designed the architecture, added precomputed benchmarks to reduce token usage, and introduced six-criteria LLM-as-judge evaluation.",
+    "description": "An applied-AI product that generates property-risk insights through a six-node workflow. I worked on React and .NET product functionality, co-designed the architecture, added precomputed benchmarks to reduce token usage, and introduced six-criteria LLM-as-judge evaluation.",
     "tags": [
+      "React",
+      ".NET",
       "Python",
       "LangGraph",
       "FastAPI",
